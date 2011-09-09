@@ -48,13 +48,13 @@ If there's no translation for the context, the translation without context is tr
 Plural-Forms
 ------------
 
-Your po file must define ``Plural-Forms`` exactly as at
-http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
-and
-http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
+Your po file must define ``Plural-Forms`` exactly as at:
 
-scaposer does not evaluate the ``plural`` expression, it just performs string
-comparison!
+* http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
+* http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
+
+scaposer does not evaluate the ``plural`` expression (C language expression!),
+it just performs string comparison!
 
 ::
 
