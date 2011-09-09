@@ -13,10 +13,10 @@ object PoParser extends JavaTokenParsers {
 
     // Unescape
     unquoted.
-    replace("\\n",  "\n").
-    replace("\\r",  "\r").
-    replace("\\t",  "\t").
-    replace("\\\\", "\\")
+      replace("\\n",  "\n").
+      replace("\\r",  "\r").
+      replace("\\t",  "\t").
+      replace("\\\\", "\\")
   }
 
   // Scala regex is single line by default
