@@ -76,13 +76,13 @@ it just performs string comparison!
 Merge Po objects
 ----------------
 
-You can merge ``Po``s together.
+You can merge ``Po`` together.
 
 ::
 
   val po3 = po1.merge(po2)
 
-Translations in po2 will overwrite those in po1.
+Translations in po2 will overwrite those in po1, just like when you merge two maps.
 
 Use with SBT
 ------------
