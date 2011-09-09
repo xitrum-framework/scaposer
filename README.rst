@@ -73,10 +73,11 @@ it just performs string comparison!
   po.t("I have one apple", "I have %d apples", 2)
   po.t("A context", "I have one apple", "I have %d apples", 3)
 
-== Use with SBT
+Use with SBT
+------------
 
 ::
 
-  libraryDependencies += "tv.cntt" % "scaposer" % "1.0-SNAPSHOT"
+  libraryDependencies += "tv.cntt" % "scaposer" % "1.0"
 
 scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
