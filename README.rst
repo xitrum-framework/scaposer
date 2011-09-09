@@ -73,6 +73,17 @@ it just performs string comparison!
   po.t("I have one apple", "I have %d apples", 2)
   po.t("A context", "I have one apple", "I have %d apples", 3)
 
+Merge Po objects
+----------------
+
+You can merge ``Po``s together.
+
+::
+
+  val po3 = po1.merge(po2)
+
+Translations in po2 will overwrite those in po1.
+
 Use with SBT
 ------------
 
