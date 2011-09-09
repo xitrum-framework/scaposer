@@ -16,7 +16,7 @@ Use ``PoParser`` to parse and get a ``Po``:
   val poo: Option[Po] = PoParser.parsePo(string)
 
 
-Use "t" methods to get the translations:
+Use ``t`` methods to get the translations:
 
 ::
 
@@ -76,8 +76,17 @@ it just performs string comparison!
 Use with SBT
 ------------
 
+Scala versions: 2.9.1.
+
 ::
 
-  libraryDependencies += "tv.cntt" % "scaposer" % "1.0"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.0"
+
+Or
+
+::
+
+  libraryDependencies += "tv.cntt" % "scaposer_2.9.1" % "1.0"
+
 
 scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
