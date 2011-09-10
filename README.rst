@@ -1,4 +1,4 @@
-scaposer is a Gettext po file parser for Scala. It's strange that there's not
+Scaposer is a Gettext po file parser for Scala. It's strange that there's not
 many JVM libraries of this kind, see the `discussion on Stackoverflow <http://stackoverflow.com/questions/4635721/is-there-a-java-library-for-parsing-gettext-po-files>`_.
 
 Basic usage
@@ -63,7 +63,7 @@ Your po file must define ``Plural-Forms`` exactly as at:
 * http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
 * http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
 
-scaposer does not evaluate the ``plural`` expression, which is in C language.
+Scaposer does not evaluate the ``plural`` expression, which is in C language.
 It just removes spaces in the expression and performs string comparison. See
 `evaluatePluralForms <https://github.com/ngocdaothanh/scaposer/blob/master/src/main/scala/scaposer/Po.scala>`_.
 
@@ -99,7 +99,7 @@ will overwrite those in po1.
 Use with Maven
 --------------
 
-You can use scaposer from Java and other JVM languages. If your build tool is Maven:
+You can use Scaposer from Java and other JVM languages. If your build tool is Maven:
 
 ::
 
@@ -134,4 +134,4 @@ Or
   libraryDependencies += "tv.cntt" % "scaposer_2.9.1" % "1.0"
 
 
-scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
+Scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
