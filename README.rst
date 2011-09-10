@@ -13,21 +13,20 @@ Use ``PoParser`` to parse and get a ``Po``:
   """
 
   import scaposer.{Po, PoParser}
-  val poo: Option[Po] = PoParser.parsePo(string)
-
+  val poo = PoParser.parsePo(string)  // => An Option[Po]
 
 Use ``t`` methods to get the translations:
 
 ::
 
   val po = poo.get
-  po.t("Hello")
+  po.t("Hello")  // => "Bonjour"
 
 If there's no translation, the input is returned:
 
 ::
 
-  po.t("Hi")
+  po.t("Hi")  // => "Hi"
 
 Context
 -------
@@ -35,15 +34,23 @@ Context
 ::
 
   val string = """
+  msgid "Hello"
+  msgstr "Bonjour"
+
   msgctxt "Casual"
   msgid "Hello"
   msgstr "Salut"
   """
 
   val po = PoParser.parsePo(string).get
-  po.t("Casual", "Hello")
+  po.t("Casual", "Hello")  // => "Salut"
 
-If there's no translation for the context, the translation without context is tried.
+If there's no translation for the context, the translation without context is tried:
+
+::
+
+  po.t("Missing context", "Hello")  // => "Bonjour"
+
 
 Plural-Forms
 ------------
@@ -80,9 +87,10 @@ You can merge ``Po`` together.
 
 ::
 
-  val po3 = po1.merge(po2)
+  val po4 = po1.merge(po2).merge(po3)
 
-Translations in po2 will overwrite those in po1, just like when you merge two maps.
+Just like when you merge maps, translations in po3 will overwrite those in po2
+will overwrite those in po1.
 
 Use with Maven
 --------------
