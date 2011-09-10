@@ -84,6 +84,28 @@ You can merge ``Po`` together.
 
 Translations in po2 will overwrite those in po1, just like when you merge two maps.
 
+Use with Maven
+--------------
+
+You can use scaposer from Java and other JVM languages. If your build tool is Maven:
+
+::
+
+  <repositories>
+    <repository>
+      <id>ScalaTools</id>
+      <url>http://scala-tools.org/repo-releases/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>tv.cntt</groupId>
+      <artifactId>scaposer_2.9.1</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+
 Use with SBT
 ------------
 
