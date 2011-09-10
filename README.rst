@@ -91,7 +91,7 @@ You can merge ``Po`` together.
 
 ::
 
-  val po4 = po1.merge(po2).merge(po3)
+  val po4 = po1 ++ po2 ++ po3
 
 Just like when you merge maps, translations in po3 will overwrite those in po2
 will overwrite those in po1.

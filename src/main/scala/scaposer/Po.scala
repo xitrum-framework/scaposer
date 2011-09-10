@@ -3,20 +3,30 @@ package scaposer
 // See class Translation.
 // body is a map of (ctxo, singular) -> strs
 class Po(val body: Map[(Option[String], String), Array[String]]) {
-  def merge(other: Po): Po = {
-    // Ensure pluralForms
-    val newBody = if (pluralFormso.isDefined) other.body ++ body else body ++ other.body
-    new Po(newBody)
+  def ++(other: Po): Po = {
+    // Note the order of "++", other" will overwrite "this"
+    val newBody = body ++ other.body
+
+    // Ensure that pluralForms is not lost because "other" does not have it
+    if (other.pluralFormso.isDefined) {
+      new Po(newBody)
+    } else {
+      if (pluralFormso.isDefined) {
+	    val key   = (None, "")
+	    val value = body(key)
+	    new Po(body + (key -> value))
+	  } else {
+	    new Po(newBody)
+	  }
+    }
   }
 
   def t(singular: String): String = lookupSingular(None, singular)
 
   def t(ctx: String, singular: String): String = lookupSingular(Some(ctx), singular)
 
-  def t(singular: String, plural: String, n: Int):  String = t(singular, plural, n.toLong)
   def t(singular: String, plural: String, n: Long): String = lookupPlural(None, singular, plural, n)
 
-  def t(ctx: String, singular: String, plural: String, n: Int):  String = t(ctx, singular, plural, n.toLong)
   def t(ctx: String, singular: String, plural: String, n: Long): String = lookupPlural(Some(ctx), singular, plural, n)
 
   override def toString = {
@@ -52,7 +62,12 @@ class Po(val body: Map[(Option[String], String), Array[String]]) {
   private def lookupSingular(ctxo: Option[String], singular: String): String = {
     body.get((ctxo, singular)) match {
       case Some(strs) => strs(0)
-      case None       => if (ctxo.isDefined) lookupSingular(None, singular) else singular
+
+      case None =>
+        if (ctxo.isDefined)
+          lookupSingular(None, singular)  // Try translation without context
+        else
+          singular
     }
   }
 
@@ -64,9 +79,9 @@ class Po(val body: Map[(Option[String], String), Array[String]]) {
 
       case None =>
         if (ctxo.isDefined)
-          lookupPlural(None, singular, plural, n)
+          lookupPlural(None, singular, plural, n)  // Try translation without context
         else
-          if (n != 1) singular else plural
+          if (n > 1) plural else singular  // English rule
     }
   }
 
