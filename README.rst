@@ -60,8 +60,9 @@ Your po file must define ``Plural-Forms`` exactly as at:
 * http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
 * http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
 
-scaposer does not evaluate the ``plural`` expression (C language expression!),
-it just performs string comparison!
+scaposer does not evaluate the ``plural`` expression, which is in C language.
+It just removes spaces in the expression and performs string comparison. See
+`evaluatePluralForms <https://github.com/ngocdaothanh/scaposer/blob/master/src/main/scala/scaposer/Po.scala>`_.
 
 ::
 
