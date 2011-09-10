@@ -1,4 +1,5 @@
-scaposer is a Gettext po file parser for Scala.
+scaposer is a Gettext po file parser for Scala. It's strange that there's not
+many JVM libraries of this kind, see the `discussion on Stackoverflow <http://stackoverflow.com/questions/4635721/is-there-a-java-library-for-parsing-gettext-po-files>`_.
 
 Basic usage
 -----------
@@ -27,6 +28,8 @@ If there's no translation, the input is returned:
 ::
 
   po.t("Hi")  // => "Hi"
+
+To take out the map of all translations (to save into DB etc.), call ``po.body``.
 
 Context
 -------
