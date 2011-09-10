@@ -1,4 +1,4 @@
-Scaposer is a Gettext po file parser for Scala. It's strange that there's not
+Scaposer is a Gettext po file parser written in Scala. It's strange that there's not
 many JVM libraries of this kind, see the `discussion on Stackoverflow <http://stackoverflow.com/questions/4635721/is-there-a-java-library-for-parsing-gettext-po-files>`_.
 
 Basic usage
