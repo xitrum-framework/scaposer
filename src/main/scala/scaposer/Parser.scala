@@ -3,7 +3,7 @@ package scaposer
 import scala.util.parsing.combinator.JavaTokenParsers
 
 // http://www.gnu.org/software/hello/manual/gettext/PO-Files.html
-object PoParser extends JavaTokenParsers {
+object Parser extends JavaTokenParsers {
   private def mergeStrs(quoteds: List[String]): String = {
     // Removes the first and last quote (") character of strings
     // and concats them

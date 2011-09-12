@@ -4,8 +4,6 @@ many JVM libraries of this kind, see the `discussion on Stackoverflow <http://st
 Basic usage
 -----------
 
-Use ``PoParser`` to parse and get a ``Po``:
-
 ::
 
   val string = """
@@ -13,8 +11,8 @@ Use ``PoParser`` to parse and get a ``Po``:
   msgstr "Bonjour"
   """
 
-  import scaposer.{Po, PoParser}
-  val poo = PoParser.parsePo(string)  // => An Option[Po]
+  import scaposer.{Po, Parser}
+  val poo = Parser.parsePo(string)  // => An Option[Po]
 
 Use ``t`` methods to get the translations:
 
@@ -45,7 +43,7 @@ Context
   msgstr "Salut"
   """
 
-  val po = PoParser.parsePo(string).get
+  val po = Parser.parsePo(string).get
   po.t("Casual", "Hello")  // => "Salut"
 
 If there's no translation for the context, the translation without context is tried:
@@ -79,7 +77,7 @@ It just removes spaces in the expression and performs string comparison. See
   msgstr[1] "J'ai %d pommes"
   """
 
-  val po = PoParser.parsePo(string).get
+  val po = Parser.parsePo(string).get
   po.t("I have one apple", "I have %d apples", 1)
   po.t("I have one apple", "I have %d apples", 2)
   po.t("A context", "I have one apple", "I have %d apples", 3)
