@@ -11,15 +11,14 @@ Basic usage
   msgstr "Bonjour"
   """
 
-  import scaposer.{Po, Parser}
-  val poo = Parser.parsePo(string)  // => An Option[Po]
+  val poo = scaposer.Parser.parsePo(string)  // => An Option[scaposer.Po] (None on failure)
 
 Use ``t`` methods to get the translations:
 
 ::
 
-  val po = poo.get
-  po.t("Hello")  // => "Bonjour"
+  val po = poo.get // => A scaposer.Po
+  po.t("Hello")    // => "Bonjour"
 
 If there's no translation, the input is returned:
 
