@@ -1,0 +1,6 @@
+Publish to Sonatype
+-------------------
+
+Run ``sbt publish`` or ``sbt`` then from SBT command prompt run ``+ publish``.
+Login at https://oss.sonatype.org/ and from "Staging Repositories" select the
+newly published item, then click "Close".

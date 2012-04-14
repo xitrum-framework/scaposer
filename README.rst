@@ -119,7 +119,7 @@ You can use Scaposer from Java and other JVM languages. If your build tool is Ma
 Use with SBT
 ------------
 
-Scala versions: 2.9.1.
+Scala versions: 2.9.x
 
 ::
 
@@ -129,7 +129,7 @@ Or
 
 ::
 
-  libraryDependencies += "tv.cntt" % "scaposer_2.9.1" % "1.0"
+  libraryDependencies += "tv.cntt" % "scaposer_2.9.2" % "1.0"
 
 
 Scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
