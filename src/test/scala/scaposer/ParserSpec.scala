@@ -32,12 +32,12 @@ class ParserSpec extends Specification {
   val strPo3 =
     """
       |msgid "Hello"
-      |msgstr "Bon\'jour"
+      |msgstr "Bon\"jour
     """.stripMargin
 
-  "PO singular string with \'" should {
-    "not be none" in {
-      Parser.parsePo(strPo3) must beSome
+  "PO singular string with \" with no doublequotes at the end" should {
+    "be none" in {
+      Parser.parsePo(strPo3) must beNone
     }
   }
 }

@@ -19,26 +19,36 @@ object Parser extends JavaTokenParsers {
       replace("\\\\", "\\")
   }
 
+  /** Double quotes (`"`) enclosing a sequence of:
+   *
+   *  - Any character except double quotes, control characters or backslash (`\`)
+   *  - A backslash followed by a slash, another backslash, or one of the letters
+   *    `b`, `f`, `n`, `r` or `t`.
+   *  - `\` followed by `u` followed by four hexadecimal digits
+   */
+  def stringLiteral2: Parser[String] =
+    ("\""+"""([^"\p{Cntrl}\\]|\\[\\/bfnrt]|(\\\")|\\u[a-fA-F0-9]{4})*"""+"\"").r
+
   // Scala regex is single line by default
   private def comment = rep(regex("^#.*".r))
 
-  private def msgctxt = "msgctxt" ~ rep(stringLiteral) ^^ {
+  private def msgctxt = "msgctxt" ~ rep(stringLiteral2) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgid = "msgid" ~ rep(stringLiteral) ^^ {
+  private def msgid = "msgid" ~ rep(stringLiteral2) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgidPlural = "msgid_plural" ~ rep(stringLiteral) ^^ {
+  private def msgidPlural = "msgid_plural" ~ rep(stringLiteral2) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgstr = "msgstr" ~ rep(stringLiteral) ^^ {
+  private def msgstr = "msgstr" ~ rep(stringLiteral2) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgstrN = "msgstr[" ~ wholeNumber ~ "]" ~ rep(stringLiteral) ^^ {
+  private def msgstrN = "msgstr[" ~ wholeNumber ~ "]" ~ rep(stringLiteral2) ^^ {
     case _ ~ number ~ _ ~ quoteds => (number.toInt, mergeStrs(quoteds))
   }
 
