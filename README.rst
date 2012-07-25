@@ -123,13 +123,13 @@ Scala versions: 2.9.x
 
 ::
 
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.0"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.1"
 
 Or
 
 ::
 
-  libraryDependencies += "tv.cntt" % "scaposer_2.9.2" % "1.0"
+  libraryDependencies += "tv.cntt" % "scaposer_2.9.2" % "1.1"
 
 
 Scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
