@@ -26,29 +26,29 @@ object Parser extends JavaTokenParsers {
    *    `b`, `f`, `n`, `r` or `t`.
    *  - `\` followed by `u` followed by four hexadecimal digits
    */
-  def stringLiteral2: Parser[String] =
-    ("\""+"""([^"\p{Cntrl}\\]|\\[\\/bfnrt]|(\\\")|\\u[a-fA-F0-9]{4})*"""+"\"").r
+  private val reStringLiteral: Parser[String] =
+    ("\""+"""((\\\")|\p{Space}|\\u[a-fA-F0-9]{4}|[^"\p{Cntrl}\\]|\\[\\/bfnrt])*"""+"\"").r
 
   // Scala regex is single line by default
   private def comment = rep(regex("^#.*".r))
 
-  private def msgctxt = "msgctxt" ~ rep(stringLiteral2) ^^ {
+  private def msgctxt = "msgctxt" ~ rep(reStringLiteral) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgid = "msgid" ~ rep(stringLiteral2) ^^ {
+  private def msgid = "msgid" ~ rep(reStringLiteral) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgidPlural = "msgid_plural" ~ rep(stringLiteral2) ^^ {
+  private def msgidPlural = "msgid_plural" ~ rep(reStringLiteral) ^^ {
     case _ ~ quoteds => mergeStrs(quoteds)
   }
 
-  private def msgstr = "msgstr" ~ rep(stringLiteral2) ^^ {
-    case _ ~ quoteds => mergeStrs(quoteds)
+  private def msgstr = "msgstr" ~ rep(reStringLiteral) ^^ {
+    case _ ~ quoteds => println(quoteds);mergeStrs(quoteds)
   }
 
-  private def msgstrN = "msgstr[" ~ wholeNumber ~ "]" ~ rep(stringLiteral2) ^^ {
+  private def msgstrN = "msgstr[" ~ wholeNumber ~ "]" ~ rep(reStringLiteral) ^^ {
     case _ ~ number ~ _ ~ quoteds => (number.toInt, mergeStrs(quoteds))
   }
 
