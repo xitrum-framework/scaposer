@@ -55,4 +55,5 @@ class ParserSpec extends Specification {
       Parser.parsePo(strPoWithWhiteSpaces) must not beNone
     }
   }
+
 }

@@ -1,0 +1,3 @@
+1.1:
+* Support double quotes in msgStr, thanks Grégory Eve
+  https://github.com/ngocdaothanh/scaposer/pull/2
