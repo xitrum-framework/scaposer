@@ -45,7 +45,7 @@ object Parser extends JavaTokenParsers {
   }
 
   private def msgstr = "msgstr" ~ rep(reStringLiteral) ^^ {
-    case _ ~ quoteds => println(quoteds);mergeStrs(quoteds)
+    case _ ~ quoteds => mergeStrs(quoteds)
   }
 
   private def msgstrN = "msgstr[" ~ wholeNumber ~ "]" ~ rep(reStringLiteral) ^^ {
