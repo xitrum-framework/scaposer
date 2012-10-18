@@ -2,7 +2,7 @@ organization := "tv.cntt"
 
 name         := "scaposer"
 
-version      := "1.1"
+version      := "1.2"
 
 scalacOptions ++= Seq(
   "-deprecation",
