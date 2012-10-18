@@ -4,7 +4,7 @@ import org.specs2.mutable._
 
 class ParserSpec extends Specification {
 
-  val strPo1 =
+  val strPoSimple =
     """
       |msgid "Hello"
       |msgstr "Bonjour"
@@ -12,12 +12,12 @@ class ParserSpec extends Specification {
 
   "PO singular string" should {
     "be some" in {
-      Parser.parsePo(strPo1) must beSome
+      Parser.parsePo(strPoSimple) must beSome
     }
   }
 
 
-  val strPo2 =
+  val strPoWithSlash =
     """
       |msgid "Hello"
       |msgstr "Bon\"jour"
@@ -25,11 +25,11 @@ class ParserSpec extends Specification {
 
   "PO singular string with \"" should {
     "not be none" in {
-      Parser.parsePo(strPo2) must not beNone
+      Parser.parsePo(strPoWithSlash) must not beNone
     }
   }
 
-  val strPo3 =
+  val strPoWithError =
     """
       |msgid "Hello"
       |msgstr "Bon\"jour
@@ -37,7 +37,23 @@ class ParserSpec extends Specification {
 
   "PO singular string with \" with no doublequotes at the end" should {
     "be none" in {
-      Parser.parsePo(strPo3) must beNone
+      Parser.parsePo(strPoWithError) must beNone
     }
   }
+  
+  val strPoWithWhiteSpaces =
+    """
+      |msgid "Hello"
+      |msgstr "Bonjour le monde"
+      |
+      |msgid "Bye"
+      |msgstr "tabulation	"
+    """.stripMargin
+
+  "PO string with tabulation character" should {
+    "not be none" in {
+      Parser.parsePo(strPoWithWhiteSpaces) must not beNone
+    }
+  }
+
 }
