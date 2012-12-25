@@ -111,7 +111,7 @@ You can use Scaposer from Java and other JVM languages. If your build tool is Ma
   <dependencies>
     <dependency>
       <groupId>tv.cntt</groupId>
-      <artifactId>scaposer_2.9.1</artifactId>
+      <artifactId>scaposer_2.9.2</artifactId>
       <version>1.0</version>
     </dependency>
   </dependencies>
@@ -119,7 +119,9 @@ You can use Scaposer from Java and other JVM languages. If your build tool is Ma
 Use with SBT
 ------------
 
-Scala versions: 2.9.x
+Supported Scala versions: 2.9.2, 2.10.0
+
+Ex:
 
 ::
 

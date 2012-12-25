@@ -1,3 +1,7 @@
+1.2:
+* Support tab charater, thanks Julien Polo
+  https://github.com/ngocdaothanh/scaposer/pull/3
+
 1.1:
 * Support double quotes in msgStr, thanks Grégory Eve
   https://github.com/ngocdaothanh/scaposer/pull/2
