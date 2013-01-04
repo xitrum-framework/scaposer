@@ -1,3 +1,5 @@
+.. image:: http://www.poedit.net/screenshots/osx.png
+
 To extract i18n strings from Scala source code files, use
 `Scala xgettext <https://github.com/ngocdaothanh/scala-xgettext>`_.
 
