@@ -106,18 +106,11 @@ You can use Scaposer from Java and other JVM languages. If your build tool is Ma
 
 ::
 
-  <repositories>
-    <repository>
-      <id>ScalaTools</id>
-      <url>http://scala-tools.org/repo-releases/</url>
-    </repository>
-  </repositories>
-
   <dependencies>
     <dependency>
       <groupId>tv.cntt</groupId>
-      <artifactId>scaposer_2.9.2</artifactId>
-      <version>1.0</version>
+      <artifactId>scaposer_2.10.0</artifactId>  <!-- Or scaposer_2.9.2 -->
+      <version>1.2</version>
     </dependency>
   </dependencies>
 
@@ -136,7 +129,7 @@ Or
 
 ::
 
-  libraryDependencies += "tv.cntt" % "scaposer_2.9.2" % "1.2"
+  libraryDependencies += "tv.cntt" % "scaposer_2.10.0" % "1.2"
 
 
 Scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
