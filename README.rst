@@ -7,6 +7,8 @@ Scaposer is a GNU gettext po file parser written in Scala.
 It's strange that there's not many JVM libraries of this kind, see the
 `discussion on Stackoverflow <http://stackoverflow.com/questions/4635721/is-there-a-java-library-for-parsing-gettext-po-files>`_.
 
+Discussion group: https://groups.google.com/group/scala-xgettext
+
 Basic usage
 -----------
 
