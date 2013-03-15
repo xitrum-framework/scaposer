@@ -11,4 +11,4 @@ scalacOptions ++= Seq(
   "-unchecked"
 )
 
-libraryDependencies += "org.specs2" %% "specs2" % "1.12.1" % "test"
+libraryDependencies += "org.specs2" %% "specs2" % "1.14" % "test"
