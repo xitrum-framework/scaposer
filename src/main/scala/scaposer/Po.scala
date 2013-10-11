@@ -106,32 +106,31 @@ class Po(val body: Map[(Option[String], String), Array[String]]) {
   // This evaluate method can only work correctly with Plural-Forms exactly listed at:
   // http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
   // http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
-  private def evaluatePluralForms(n: Int):  Int = evaluatePluralForms(n.toLong)
-  private def evaluatePluralForms(n: Long): Int = {
+  private val evaluatePluralForms: (Long => Int) = {
     if (pluralFormsMatched("nplurals=1; plural=0")) {
-      0
+      n => 0
     } else if (pluralFormsMatched("nplurals=2; plural=n != 1")) {
-      if (n != 1) 1 else 0
+      n => if (n != 1) 1 else 0
     } else if (pluralFormsMatched("nplurals=2; plural=n>1")) {
-      if (n > 1) 1 else 0
+      n => if (n > 1) 1 else 0
     } else if (pluralFormsMatched("nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2")) {
-      if (n % 10 == 1 && n % 100 != 11) 0 else if (n != 0) 1 else 2
+      n => if (n % 10 == 1 && n % 100 != 11) 0 else if (n != 0) 1 else 2
     } else if (pluralFormsMatched("nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2")) {
-      if (n == 1) 0 else if (n == 2) 1 else 2
+      n => if (n == 1) 0 else if (n == 2) 1 else 2
     } else if (pluralFormsMatched("nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2")) {
-      if (n == 1) 0 else if (n == 0 || (n % 100 > 0 && n % 100 < 20)) 1 else 2
+      n => if (n == 1) 0 else if (n == 0 || (n % 100 > 0 && n % 100 < 20)) 1 else 2
     } else if (pluralFormsMatched("nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2")) {
-      if (n % 10 == 1 && n % 100 != 11) 0 else if (n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20)) 1 else 2
+      n => if (n % 10 == 1 && n % 100 != 11) 0 else if (n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20)) 1 else 2
     } else if (pluralFormsMatched("nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2")) {
-      if (n % 10 == 1 && n % 100 != 11) 0 else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) 1 else 2
+      n => if (n % 10 == 1 && n % 100 != 11) 0 else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) 1 else 2
     } else if (pluralFormsMatched("nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2")) {
-      if (n == 1) 0 else if (n >= 2 && n <= 4) 1 else 2
+      n => if (n == 1) 0 else if (n >= 2 && n <= 4) 1 else 2
     } else if (pluralFormsMatched("nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2")) {
-      if (n == 1) 0 else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) 1 else 2
+      n => if (n == 1) 0 else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) 1 else 2
     } else if (pluralFormsMatched("nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3")) {
-      if (n % 100 == 1) 0 else if (n % 100 == 2) 1 else if (n % 100 == 3 || n % 100 == 4) 2 else 3
+      n => if (n % 100 == 1) 0 else if (n % 100 == 2) 1 else if (n % 100 == 3 || n % 100 == 4) 2 else 3
     } else {
-      0
+      n => 0
     }
   }
 
