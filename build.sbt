@@ -17,7 +17,7 @@ scalacOptions ++= Seq(
 // java.lang.UnsupportedClassVersionError: xitrum/annotation/First : Unsupported major.minor version 51.0
 javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
 
-libraryDependencies += "org.specs2" %% "specs2" % "2.1.1" % "test"
+libraryDependencies += "org.specs2" %% "specs2" % "2.2.2" % "test"
 
 //------------------------------------------------------------------------------
 
