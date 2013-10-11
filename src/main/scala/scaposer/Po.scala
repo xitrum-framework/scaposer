@@ -4,7 +4,7 @@ package scaposer
 // body is a map of (ctxo, singular) -> strs
 class Po(val body: Map[(Option[String], String), Array[String]]) {
   def ++(other: Po): Po = {
-    // Note the order of "++", other" will overwrite "this"
+    // Note the order of "++", "other" will overwrite "this"
     val newBody = body ++ other.body
 
     // Ensure that pluralForms is not lost because "other" does not have it
@@ -81,7 +81,7 @@ class Po(val body: Map[(Option[String], String), Array[String]]) {
         if (ctxo.isDefined)
           lookupPlural(None, singular, plural, n)  // Try translation without context
         else
-          if (n != 1) plural else singular  // English rule
+          if (n != 1) plural else singular  // English rule (not "n > 1"!)
     }
   }
 
