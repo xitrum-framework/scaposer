@@ -81,7 +81,7 @@ class Po(val body: Map[(Option[String], String), Array[String]]) {
         if (ctxo.isDefined)
           lookupPlural(None, singular, plural, n)  // Try translation without context
         else
-          if (n > 1) plural else singular  // English rule
+          if (n != 1) plural else singular  // English rule
     }
   }
 
