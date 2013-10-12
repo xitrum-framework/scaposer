@@ -101,37 +101,15 @@ You can merge ``Po`` together.
 Just like when you merge maps, translations in po3 will overwrite those in po2
 will overwrite those in po1.
 
-Use with Maven
---------------
-
-You can use Scaposer from Java and other JVM languages. If your build tool is Maven:
-
-::
-
-  <dependencies>
-    <dependency>
-      <groupId>tv.cntt</groupId>
-      <artifactId>scaposer_2.10.0</artifactId>  <!-- Or scaposer_2.9.2 -->
-      <version>1.2</version>
-    </dependency>
-  </dependencies>
-
 Use with SBT
 ------------
 
-Supported Scala versions: 2.9.2, 2.10.0
+Supported Scala versions: 2.10.x
 
-Ex:
-
-::
-
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.2"
-
-Or
+build.sbt example:
 
 ::
 
-  libraryDependencies += "tv.cntt" % "scaposer_2.10.0" % "1.2"
-
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.3"
 
 Scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
