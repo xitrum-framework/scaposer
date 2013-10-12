@@ -14,7 +14,7 @@ publishArtifact in Test := false
 pomIncludeRepository := { _ => false }
 
 pomExtra := (
-  <url>http://ngocdaothanh.github.com/scaposer/</url>
+  <url>https://github.com/ngocdaothanh/scaposer</url>
   <licenses>
     <license>
       <name>MIT</name>
