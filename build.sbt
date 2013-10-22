@@ -8,6 +8,7 @@ scalaVersion := "2.10.3"
 
 scalacOptions ++= Seq(
   "-deprecation",
+  "-feature",
   "-unchecked"
 )
 
