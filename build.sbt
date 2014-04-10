@@ -14,7 +14,7 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 // java.lang.UnsupportedClassVersionError: Unsupported major.minor version 51.0
 javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
 
-libraryDependencies += "org.specs2" %% "specs2" % "2.3.10" % "test"
+libraryDependencies += "org.specs2" %% "specs2" % "2.3.11" % "test"
 
 //------------------------------------------------------------------------------
 
