@@ -12,6 +12,8 @@ Discussion group: https://groups.google.com/group/scala-xgettext
 Basic usage
 -----------
 
+See `Scaladoc <http://ngocdaothanh.github.io/scaposer/>`_.
+
 ::
 
   val string = """
@@ -104,7 +106,7 @@ will overwrite those in po1.
 Use with SBT
 ------------
 
-Supported Scala versions: 2.10.x
+Supported Scala versions: 2.11.x, 2.10.x
 
 build.sbt example:
 

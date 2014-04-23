@@ -1,10 +1,12 @@
-organization := "tv.cntt"
+organization       := "tv.cntt"
 
-name         := "scaposer"
+name               := "scaposer"
 
-version      := "1.4-SNAPSHOT"
+version            := "1.4-SNAPSHOT"
 
-scalaVersion := "2.10.4"
+scalaVersion       := "2.11.0"
+
+crossScalaVersions := Seq("2.11.0", "2.10.4")
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
@@ -13,6 +15,16 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 // are run with Java 6
 // java.lang.UnsupportedClassVersionError: Unsupported major.minor version 51.0
 javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
+
+// Scala 2.11 does not include scala.util.parsing.combinator
+libraryDependencies := {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, scalaMajor)) if scalaMajor >= 11 =>
+      libraryDependencies.value :+ "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.1"
+    case _ =>
+      libraryDependencies.value
+  }
+}
 
 libraryDependencies += "org.specs2" %% "specs2" % "2.3.11" % "test"
 
