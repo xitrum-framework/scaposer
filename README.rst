@@ -5,14 +5,14 @@ It's strange that there's not many JVM libraries of this kind, see the
 `discussion on Stackoverflow <http://stackoverflow.com/questions/4635721/is-there-a-java-library-for-parsing-gettext-po-files>`_.
 
 To extract i18n strings from Scala source code files, use
-`Scala xgettext <https://github.com/ngocdaothanh/scala-xgettext>`_.
+`Scala xgettext <https://github.com/xitrum-framework/scala-xgettext>`_.
 
 Discussion group: https://groups.google.com/group/scala-xgettext
 
 Basic usage
 -----------
 
-See `Scaladoc <http://ngocdaothanh.github.io/scaposer/>`_.
+See `Scaladoc <http://xitrum-framework.github.io/scaposer/>`_.
 
 ::
 
@@ -72,7 +72,7 @@ Your po file must define ``Plural-Forms`` exactly as at:
 
 Scaposer does not evaluate the ``plural`` expression, which is in C language.
 It just removes spaces in the expression and performs string comparison. See
-`evaluatePluralForms <https://github.com/ngocdaothanh/scaposer/blob/master/src/main/scala/scaposer/Po.scala>`_.
+`evaluatePluralForms <https://github.com/xitrum-framework/scaposer/blob/master/src/main/scala/scaposer/Po.scala>`_.
 
 ::
 
@@ -114,4 +114,4 @@ build.sbt example:
 
   libraryDependencies += "tv.cntt" %% "scaposer" % "1.3"
 
-Scaposer is used in `Xitrum <https://github.com/ngocdaothanh/xitrum>`_.
+Scaposer is used in `Xitrum <https://github.com/xitrum-framework/xitrum>`_.
