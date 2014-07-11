@@ -1,4 +1,4 @@
-.. image:: http://www.poedit.net/screenshots/osx.png
+.. image:: poedit.png
 
 Scaposer is a GNU gettext po file parser written in Scala.
 It's strange that there's not many JVM libraries of this kind, see the
