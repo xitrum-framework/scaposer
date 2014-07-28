@@ -1,6 +1,8 @@
 1.4:
 * Update scala-parser-combinators from 1.0.1 to 1.0.2
   https://github.com/xitrum-framework/scaposer/issues/7
+* Replace Array with Seq
+  https://github.com/xitrum-framework/scaposer/issues/8
 
 1.3: Thanks to Martin Pärtel
 * Fix default plural rule: English uses n != 1 instead of n > 1

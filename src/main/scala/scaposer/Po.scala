@@ -1,8 +1,10 @@
 package scaposer
 
-// See class Translation.
-// body is a map of (ctxo, singular) -> strs
-class Po(val body: Map[(Option[String], String), Array[String]]) {
+/**
+ * body is a map of (ctxo, singular) -> strs
+ * See also class Translation.
+ */
+class Po(val body: Map[(Option[String], String), Seq[String]]) {
   def ++(other: Po): Po = {
     // Note the order of "++", "other" will overwrite "this"
     val newBody = body ++ other.body
@@ -12,12 +14,12 @@ class Po(val body: Map[(Option[String], String), Array[String]]) {
       new Po(newBody)
     } else {
       if (pluralFormso.isDefined) {
-	    val key   = (None, "")
-	    val value = body(key)
-	    new Po(body + (key -> value))
-	  } else {
-	    new Po(newBody)
-	  }
+      val key   = (None, "")
+      val value = body(key)
+      new Po(body + (key -> value))
+    } else {
+      new Po(newBody)
+    }
     }
   }
 

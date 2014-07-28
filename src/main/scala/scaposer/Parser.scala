@@ -2,7 +2,7 @@ package scaposer
 
 import scala.util.parsing.combinator.JavaTokenParsers
 
-// http://www.gnu.org/software/hello/manual/gettext/PO-Files.html
+/** See http://www.gnu.org/software/hello/manual/gettext/PO-Files.html */
 object Parser extends JavaTokenParsers {
   private def mergeStrs(quoteds: List[String]): String = {
     // Removes the first and last quote (") character of strings
@@ -19,12 +19,13 @@ object Parser extends JavaTokenParsers {
       replace("\\\\", "\\")
   }
 
-  /** Double quotes (`"`) enclosing a sequence of:
+  /**
+   * Double quotes (`"`) enclosing a sequence of:
    *
-   *  - Any character except double quotes, control characters or backslash (`\`)
-   *  - A backslash followed by a slash, another backslash, or one of the letters
+   * - Any character except double quotes, control characters or backslash (`\`)
+   * - A backslash followed by a slash, another backslash, or one of the letters
    *    `b`, `f`, `n`, `r` or `t`.
-   *  - `\` followed by `u` followed by four hexadecimal digits
+   * - `\` followed by `u` followed by four hexadecimal digits
    */
   private val reStringLiteral: Parser[String] =
     ("\""+"""((\\\")|\p{Space}|\\u[a-fA-F0-9]{4}|[^"\p{Cntrl}\\]|\\[\\/bfnrt])*"""+"\"").r
@@ -67,7 +68,7 @@ object Parser extends JavaTokenParsers {
      opt(comment) ~ rep(msgstrN) ~ opt(comment)) ^^ {
     case _ ~ ctxo ~ _ ~ id ~ _ ~ _ ~ _ ~ n_strs ~ _ =>
       val strs = n_strs.sorted.map { case (n, str) => str }
-      new Translation(ctxo, id, strs.toArray)
+      new Translation(ctxo, id, strs)
   }
 
   private def exp = rep(singular | plural)
@@ -77,7 +78,8 @@ object Parser extends JavaTokenParsers {
     if (parseRet.successful) {
       val translations = parseRet.get
       val body         = translations.foldLeft(
-          Map[(Option[String], String), Array[String]]()) { (acc, t) =>
+        Map.empty[(Option[String], String), Seq[String]]
+      ) { (acc, t) =>
         val item = (t.ctxo, t.singular) -> t.strs
         acc + item
       }
