@@ -26,7 +26,7 @@ libraryDependencies := {
   }
 }
 
-libraryDependencies += "org.specs2" %% "specs2" % "2.3.12" % "test"
+libraryDependencies += "org.specs2" %% "specs2" % "2.3.13" % "test"
 
 //------------------------------------------------------------------------------
 
