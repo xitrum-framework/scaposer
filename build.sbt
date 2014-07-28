@@ -4,9 +4,9 @@ name               := "scaposer"
 
 version            := "1.4-SNAPSHOT"
 
-scalaVersion       := "2.11.1"
+scalaVersion       := "2.11.2"
 
-crossScalaVersions := Seq("2.11.1", "2.10.4")
+crossScalaVersions := Seq("2.11.2", "2.10.4")
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
@@ -20,7 +20,7 @@ javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
 libraryDependencies := {
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((2, scalaMajor)) if scalaMajor >= 11 =>
-      libraryDependencies.value :+ "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.1"
+      libraryDependencies.value :+ "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.2"
     case _ =>
       libraryDependencies.value
   }
