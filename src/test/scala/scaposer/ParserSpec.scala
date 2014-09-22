@@ -3,7 +3,6 @@ package scaposer
 import org.specs2.mutable._
 
 class ParserSpec extends Specification {
-
   val strPoSimple =
     """
       |msgid "Hello"
@@ -16,6 +15,7 @@ class ParserSpec extends Specification {
     }
   }
 
+  //----------------------------------------------------------------------------
 
   val strPoWithSlash =
     """
@@ -29,6 +29,8 @@ class ParserSpec extends Specification {
     }
   }
 
+  //----------------------------------------------------------------------------
+
   val strPoWithError =
     """
       |msgid "Hello"
@@ -40,7 +42,9 @@ class ParserSpec extends Specification {
       Parser.parsePo(strPoWithError) must beNone
     }
   }
-  
+
+  //----------------------------------------------------------------------------
+
   val strPoWithWhiteSpaces =
     """
       |msgid "Hello"
@@ -55,5 +59,4 @@ class ParserSpec extends Specification {
       Parser.parsePo(strPoWithWhiteSpaces) must not beNone
     }
   }
-
 }

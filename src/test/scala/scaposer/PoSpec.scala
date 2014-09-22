@@ -3,9 +3,8 @@ package scaposer
 import org.specs2.mutable._
 
 class PoSpec extends Specification {
-
   "Plural-Forms where n != 1" should {
-    val poSource =
+    val po = Parser.parsePo(
       """
         |msgid ""
         |msgstr "Plural-Forms: nplurals=2; plural=n != 1;"
@@ -15,8 +14,7 @@ class PoSpec extends Specification {
         |msgstr[0] "Yksi ankanpoikanen"
         |msgstr[1] "$n ankanpoikasta"
       """.stripMargin
-
-    val po = Parser.parsePo(poSource).get
+    ).get
 
     "work" in {
       po.t("One duckling", "$n ducklings", 2) must equalTo ("$n ankanpoikasta")
@@ -32,6 +30,19 @@ class PoSpec extends Specification {
       po.t("One monkey", "$n monkeys", 2) must equalTo ("$n monkeys")
       po.t("One monkey", "$n monkeys", 1) must equalTo ("One monkey")
       po.t("One monkey", "$n monkeys", 0) must equalTo ("$n monkeys")
+    }
+  }
+
+  "Empty translations" should {
+    val po = Parser.parsePo(
+      """
+        |msgid "Could not login."
+        |msgstr ""
+      """.stripMargin
+    ).get
+
+    "use msgid instead of the meaningless empty msgstr" in {
+      po.t("Could not login.") must equalTo ("Could not login.")
     }
   }
 }

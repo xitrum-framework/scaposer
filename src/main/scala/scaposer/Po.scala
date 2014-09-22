@@ -63,7 +63,10 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
 
   private def lookupSingular(ctxo: Option[String], singular: String): String = {
     body.get((ctxo, singular)) match {
-      case Some(strs) => strs(0)
+      case Some(strs) =>
+        // Newly created .pot/.po files have keys but the values are all empty
+        val str = strs(0)
+        if (str.isEmpty) singular else str
 
       case None =>
         if (ctxo.isDefined)
@@ -77,7 +80,13 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
     body.get((ctxo, singular)) match {
       case Some(strs) =>
         val index = evaluatePluralForms(n)
-        if (index >= strs.size) plural else strs(index)
+        if (index >= strs.size) {
+          plural
+        } else {
+          // Newly created .pot/.po files have keys but the values are all empty
+          val str = strs(index)
+          if (str.isEmpty) singular else str
+        }
 
       case None =>
         if (ctxo.isDefined)
