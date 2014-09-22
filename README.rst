@@ -112,6 +112,6 @@ build.sbt example:
 
 ::
 
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.4"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.5"
 
 Scaposer is used in `Xitrum <https://github.com/xitrum-framework/xitrum>`_.

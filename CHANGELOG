@@ -1,19 +1,28 @@
+1.5:
+
+* Use the original string when it's still not translated
+  https://github.com/xitrum-framework/scaposer/issues/10
+
 1.4:
+
 * Update scala-parser-combinators from 1.0.1 to 1.0.2
   https://github.com/xitrum-framework/scaposer/issues/7
 * Replace Array with Seq
   https://github.com/xitrum-framework/scaposer/issues/8
 
 1.3: Thanks to Martin Pärtel
+
 * Fix default plural rule: English uses n != 1 instead of n > 1
   https://github.com/xitrum-framework/scaposer/pull/4
 * Optimize plural form evaluation speed
   https://github.com/xitrum-framework/scaposer/pull/5
 
 1.2: Thanks to Julien Polo
+
 * Support tab charater
   https://github.com/xitrum-framework/scaposer/pull/3
 
 1.1: Thanks to Grégory Eve
+
 * Support double quotes in msgStr
   https://github.com/xitrum-framework/scaposer/pull/2
