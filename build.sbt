@@ -2,7 +2,7 @@ organization       := "tv.cntt"
 
 name               := "scaposer"
 
-version            := "1.5-SNAPSHOT"
+version            := "1.6-SNAPSHOT"
 
 scalaVersion       := "2.11.2"
 
