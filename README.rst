@@ -30,7 +30,8 @@ Use ``t`` methods to get the translations:
   val po = poo.get // => A scaposer.Po
   po.t("Hello")    // => "Bonjour"
 
-If there's no translation, the input is returned:
+If there's no translation, or the translation is an empty string (not translated yet),
+the input is returned:
 
 ::
 
