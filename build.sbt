@@ -4,9 +4,9 @@ name               := "scaposer"
 
 version            := "1.6-SNAPSHOT"
 
-scalaVersion       := "2.11.2"
+scalaVersion       := "2.11.4"
 
-crossScalaVersions := Seq("2.11.2", "2.10.4")
+crossScalaVersions := Seq("2.11.4", "2.10.4")
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
@@ -26,7 +26,7 @@ libraryDependencies := {
   }
 }
 
-libraryDependencies += "org.specs2" %% "specs2" % "2.3.13" % "test"
+libraryDependencies += "org.specs2" %% "specs2-core" % "2.4.11" % "test"
 
 //------------------------------------------------------------------------------
 
