@@ -21,17 +21,18 @@ See `Scaladoc <http://xitrum-framework.github.io/scaposer/>`_.
   msgstr "Bonjour"
   """
 
-  val poo = scaposer.Parser.parsePo(string)  // => An Option[scaposer.Po] (None on failure)
+  val poe = scaposer.Parser.parsePo(string)
+  // => An Either, Left((error msg, error position)) on failure, or Right(scaposer.Po) on success
 
 Use ``t`` methods to get the translations:
 
 ::
 
-  val po = poo.get // => A scaposer.Po
-  po.t("Hello")    // => "Bonjour"
+  val po = poe.right.get // => A scaposer.Po
+  po.t("Hello")          // => "Bonjour"
 
 If there's no translation, or the translation is an empty string (not translated yet),
-the input is returned:
+the original input is returned:
 
 ::
 
@@ -53,7 +54,7 @@ Context
   msgstr "Salut"
   """
 
-  val po = Parser.parsePo(string).get
+  val po = Parser.parsePo(string).right.get
   po.t("Casual", "Hello")  // => "Salut"
 
 If there's no translation for the context, the translation without context is tried:
@@ -87,7 +88,7 @@ It just removes spaces in the expression and performs string comparison. See
   msgstr[1] "J'ai %d pommes"
   """
 
-  val po = Parser.parsePo(string).get
+  val po = Parser.parsePo(string).right.get
   po.t("I have one apple", "I have %d apples", 1)
   po.t("I have one apple", "I have %d apples", 2)
   po.t("A context", "I have one apple", "I have %d apples", 3)
@@ -113,6 +114,6 @@ build.sbt example:
 
 ::
 
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.5"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.6"
 
-Scaposer is used in `Xitrum <https://github.com/xitrum-framework/xitrum>`_.
+Scaposer is used in `Xitrum web framework <https://github.com/xitrum-framework/xitrum>`_.

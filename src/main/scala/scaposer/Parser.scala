@@ -1,9 +1,22 @@
 package scaposer
 
 import scala.util.parsing.combinator.JavaTokenParsers
+import scala.util.parsing.input.Position
+
+// We only want to expose parsePo method.
+object Parser {
+  private val parser = new Parser
+
+  /**
+   * Returns an `Either`,
+   * `Left((error msg, error position))` on failure,
+   * or `Right(scaposer.Po)` on success.
+   */
+  def parsePo(po: String) = parser.parsePo(po)
+}
 
 /** See http://www.gnu.org/software/hello/manual/gettext/PO-Files.html */
-object Parser extends JavaTokenParsers {
+private class Parser extends JavaTokenParsers {
   private def mergeStrs(quoteds: List[String]): String = {
     // Removes the first and last quote (") character of strings
     // and concats them
@@ -73,19 +86,25 @@ object Parser extends JavaTokenParsers {
 
   private def exp = rep(singular | plural)
 
-  def parsePo(po: String): Option[Po] = {
-    val parseRet = parseAll(exp, po)
-    if (parseRet.successful) {
-      val translations = parseRet.get
-      val body         = translations.foldLeft(
-        Map.empty[(Option[String], String), Seq[String]]
-      ) { (acc, t) =>
-        val item = (t.ctxo, t.singular) -> t.strs
-        acc + item
-      }
-      Some(new Po(body))
-    } else {
-      None
+  /**
+   * Returns an `Either`,
+   * `Left((error msg, error position))` on failure,
+   * or `Right(scaposer.Po)` on success.
+   */
+  def parsePo(po: String): Either[(String, Position), Po] = {
+    parseAll(exp, po) match {
+      case NoSuccess(msg, next) =>
+        val errorPos = next.pos
+        Left((msg, errorPos))
+
+      case Success(translations, _) =>
+        val body = translations.foldLeft(
+          Map.empty[(Option[String], String), Seq[String]]
+        ) { (acc, t) =>
+          val item = (t.ctxo, t.singular) -> t.strs
+          acc + item
+        }
+        Right(new Po(body))
     }
   }
 }

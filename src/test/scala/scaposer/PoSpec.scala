@@ -14,7 +14,7 @@ class PoSpec extends Specification {
         |msgstr[0] "Yksi ankanpoikanen"
         |msgstr[1] "$n ankanpoikasta"
       """.stripMargin
-    ).get
+    ).right.get
 
     "work" in {
       po.t("One duckling", "$n ducklings", 2) must equalTo ("$n ankanpoikasta")
@@ -24,7 +24,7 @@ class PoSpec extends Specification {
   }
 
   "Missing translations" should {
-    val po = Parser.parsePo("").get
+    val po = Parser.parsePo("").right.get
 
     "be pluralized with the n != 1 rule" in {
       po.t("One monkey", "$n monkeys", 2) must equalTo ("$n monkeys")
@@ -39,7 +39,7 @@ class PoSpec extends Specification {
         |msgid "Could not login."
         |msgstr ""
       """.stripMargin
-    ).get
+    ).right.get
 
     "use msgid instead of the meaningless empty msgstr" in {
       po.t("Could not login.") must equalTo ("Could not login.")

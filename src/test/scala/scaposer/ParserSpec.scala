@@ -10,8 +10,8 @@ class ParserSpec extends Specification {
     """.stripMargin
 
   "PO singular string" should {
-    "be some" in {
-      Parser.parsePo(strPoSimple) must beSome
+    "be Right" in {
+      Parser.parsePo(strPoSimple) must beRight
     }
   }
 
@@ -24,8 +24,8 @@ class ParserSpec extends Specification {
     """.stripMargin
 
   "PO singular string with \"" should {
-    "not be none" in {
-      Parser.parsePo(strPoWithSlash) must not beNone
+    "be Right" in {
+      Parser.parsePo(strPoWithSlash) must beRight
     }
   }
 
@@ -38,8 +38,8 @@ class ParserSpec extends Specification {
     """.stripMargin
 
   "PO singular string with \" with no doublequotes at the end" should {
-    "be none" in {
-      Parser.parsePo(strPoWithError) must beNone
+    "be Left" in {
+      Parser.parsePo(strPoWithError) must beLeft
     }
   }
 
@@ -55,8 +55,8 @@ class ParserSpec extends Specification {
     """.stripMargin
 
   "PO string with tabulation character" should {
-    "not be none" in {
-      Parser.parsePo(strPoWithWhiteSpaces) must not beNone
+    "be Right" in {
+      Parser.parsePo(strPoWithWhiteSpaces) must beRight
     }
   }
 }

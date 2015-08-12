@@ -1,8 +1,7 @@
 package scaposer
 
 /**
- * body is a map of (ctxo, singular) -> strs
- * See also class Translation.
+ * `body` is a map of `(ctxo, singular) -> strs`, see class [[Translation]].
  */
 class Po(val body: Map[(Option[String], String), Seq[String]]) {
   def ++(other: Po): Po = {
@@ -35,7 +34,7 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
     val buffer = new StringBuilder
     buffer.append("\n")
     body.foreach { case ((ctxo, singular), strs) =>
-      if (!ctxo.isEmpty) {
+      if (ctxo.isDefined) {
         buffer.append(ctxo.get)
         buffer.append("\n")
       }
@@ -44,7 +43,7 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
       buffer.append("\n")
 
       if (strs.size == 1) {
-        buffer.append(strs(0))
+        buffer.append(strs.head)
         buffer.append("\n")
       } else {
         strs.zipWithIndex.foreach { case (str, index) =>
@@ -65,7 +64,7 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
     body.get((ctxo, singular)) match {
       case Some(strs) =>
         // Newly created .pot/.po files have keys but the values are all empty
-        val str = strs(0)
+        val str = strs.head
         if (str.isEmpty) singular else str
 
       case None =>
@@ -104,7 +103,7 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
       case None => None
 
       case Some(strs) =>
-        val header = strs(0)
+        val header = strs.head
         header.lines.find(_.startsWith("Plural-Forms")) match {
           case None => None
 
