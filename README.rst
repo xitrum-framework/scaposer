@@ -55,13 +55,13 @@ Context
   """
 
   val po = Parser.parsePo(string).right.get
-  po.t("Casual", "Hello")  // => "Salut"
+  po.tc("Casual", "Hello")  // => "Salut"
 
 If there's no translation for the context, the translation without context is tried:
 
 ::
 
-  po.t("Missing context", "Hello")  // => "Bonjour"
+  po.tc("Missing context", "Hello")  // => "Bonjour"
 
 
 Plural-Forms
@@ -89,9 +89,9 @@ It just removes spaces in the expression and performs string comparison. See
   """
 
   val po = Parser.parsePo(string).right.get
-  po.t("I have one apple", "I have %d apples", 1)
-  po.t("I have one apple", "I have %d apples", 2)
-  po.t("A context", "I have one apple", "I have %d apples", 3)
+  po.tn("I have one apple", "I have %d apples", 1)
+  po.tn("I have one apple", "I have %d apples", 2)
+  po.tcn("A context", "I have one apple", "I have %d apples", 3)
 
 Merge Po objects
 ----------------
