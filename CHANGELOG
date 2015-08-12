@@ -1,7 +1,9 @@
-1.6
+1.6: Improve based on feedback at ScalaSyd 39 http://www.meetup.com/scalasyd/events/224460821/
 
 * Provide a way to get error message when parsing fails
   https://github.com/xitrum-framework/scaposer/issues/12
+* Change Po APIs to t, tc, tn, tcn
+  https://github.com/xitrum-framework/scaposer/issues/13
 
 1.5:
 

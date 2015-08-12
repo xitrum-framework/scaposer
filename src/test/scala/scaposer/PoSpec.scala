@@ -17,9 +17,9 @@ class PoSpec extends Specification {
     ).right.get
 
     "work" in {
-      po.t("One duckling", "$n ducklings", 2) must equalTo ("$n ankanpoikasta")
-      po.t("One duckling", "$n ducklings", 1) must equalTo ("Yksi ankanpoikanen")
-      po.t("One duckling", "$n ducklings", 0) must equalTo ("$n ankanpoikasta")
+      po.tn("One duckling", "$n ducklings", 2) must equalTo ("$n ankanpoikasta")
+      po.tn("One duckling", "$n ducklings", 1) must equalTo ("Yksi ankanpoikanen")
+      po.tn("One duckling", "$n ducklings", 0) must equalTo ("$n ankanpoikasta")
     }
   }
 
@@ -27,9 +27,9 @@ class PoSpec extends Specification {
     val po = Parser.parsePo("").right.get
 
     "be pluralized with the n != 1 rule" in {
-      po.t("One monkey", "$n monkeys", 2) must equalTo ("$n monkeys")
-      po.t("One monkey", "$n monkeys", 1) must equalTo ("One monkey")
-      po.t("One monkey", "$n monkeys", 0) must equalTo ("$n monkeys")
+      po.tn("One monkey", "$n monkeys", 2) must equalTo ("$n monkeys")
+      po.tn("One monkey", "$n monkeys", 1) must equalTo ("One monkey")
+      po.tn("One monkey", "$n monkeys", 0) must equalTo ("$n monkeys")
     }
   }
 

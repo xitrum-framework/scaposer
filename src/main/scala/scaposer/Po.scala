@@ -24,11 +24,11 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
 
   def t(singular: String): String = lookupSingular(None, singular)
 
-  def t(ctx: String, singular: String): String = lookupSingular(Some(ctx), singular)
+  def tc(ctx: String, singular: String): String = lookupSingular(Some(ctx), singular)
 
-  def t(singular: String, plural: String, n: Long): String = lookupPlural(None, singular, plural, n)
+  def tn(singular: String, plural: String, n: Long): String = lookupPlural(None, singular, plural, n)
 
-  def t(ctx: String, singular: String, plural: String, n: Long): String = lookupPlural(Some(ctx), singular, plural, n)
+  def tcn(ctx: String, singular: String, plural: String, n: Long): String = lookupPlural(Some(ctx), singular, plural, n)
 
   override def toString = {
     val buffer = new StringBuilder
