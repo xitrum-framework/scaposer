@@ -1,1 +1,1 @@
-Index.PACKAGES = {"scaposer" : [{"object" : "scaposer\/Parser$.html", "name" : "scaposer.Parser"}, {"class" : "scaposer\/Po.html", "name" : "scaposer.Po"}, {"class" : "scaposer\/Translation.html", "name" : "scaposer.Translation"}]};
+Index.PACKAGES = {"scaposer" : [{"object" : "scaposer\/Parser$.html", "name" : "scaposer.Parser"}, {"class" : "scaposer\/Po.html", "name" : "scaposer.Po"}, {"case class" : "scaposer\/Translation.html", "name" : "scaposer.Translation"}]};

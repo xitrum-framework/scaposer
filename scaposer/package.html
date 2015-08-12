@@ -30,7 +30,7 @@
       <div id="definition">
         <img src="../lib/package_big.png" />
         
-        <h1>scaposer</h1> <span class="permalink">
+        <h1>scaposer</h1><span class="permalink">
       <a href="../index.html#scaposer.package" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
@@ -82,25 +82,27 @@
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">body is a map of (ctxo, singular) -&gt; strs
-See also class Translation.</p>
-    </li><li name="scaposer.Translation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TranslationextendsAnyRef"></a>
+      <p class="shortcomment cmt"><code>body</code> is a map of <code>(ctxo, singular) -&gt; strs</code>, see class <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>.</p>
+    </li><li name="scaposer.Translation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TranslationextendsProductwithSerializable"></a>
       <a id="Translation:Translation"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Translation.html"><span class="name">Translation</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="Translation.html"><span class="name">Translation</span></a><span class="params">(<span name="ctxo">ctxo: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="strs">strs: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.package@TranslationextendsAnyRef" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.package@TranslationextendsProductwithSerializable" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Represents a translation item.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a translation item.
+<code>msgid_plural</code> in po file is for translators. We do not need to store it here
+because it is available in the translation methods of class <a href="Po.html" class="extype" name="scaposer.Po">Po</a>.
+</p></div></div>
     </li></ol>
             </div>
 
@@ -117,14 +119,14 @@ See also class Translation.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Parser$.html"><span class="name">Parser</span></a><span class="result"> extends <span class="extype" name="scala.util.parsing.combinator.JavaTokenParsers">JavaTokenParsers</span></span>
+        <a href="Parser$.html"><span class="name">Parser</span></a>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#scaposer.package@Parser" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">See http://www.gnu.org/software/hello/manual/gettext/PO-Files.html</p>
+      
     </li></ol>
             </div>
 
