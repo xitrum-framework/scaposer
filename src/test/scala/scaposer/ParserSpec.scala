@@ -11,7 +11,7 @@ class ParserSpec extends Specification {
 
   "PO singular string" should {
     "be Right" in {
-      Parser.parsePo(strPoSimple) must beRight
+      Parser.parse(strPoSimple) must beRight
     }
   }
 
@@ -25,7 +25,7 @@ class ParserSpec extends Specification {
 
   "PO singular string with \"" should {
     "be Right" in {
-      Parser.parsePo(strPoWithSlash) must beRight
+      Parser.parse(strPoWithSlash) must beRight
     }
   }
 
@@ -39,7 +39,7 @@ class ParserSpec extends Specification {
 
   "PO singular string with \" with no doublequotes at the end" should {
     "be Left" in {
-      Parser.parsePo(strPoWithError) must beLeft
+      Parser.parse(strPoWithError) must beLeft
     }
   }
 
@@ -56,7 +56,7 @@ class ParserSpec extends Specification {
 
   "PO string with tabulation character" should {
     "be Right" in {
-      Parser.parsePo(strPoWithWhiteSpaces) must beRight
+      Parser.parse(strPoWithWhiteSpaces) must beRight
     }
   }
 }

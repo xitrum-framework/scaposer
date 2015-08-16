@@ -1,25 +1,25 @@
 package scaposer
 
+import java.io.Reader
 import scala.util.parsing.combinator.JavaTokenParsers
-import scala.util.parsing.input.Position
 
-// We only want to expose parsePo method.
+/**  Parses .po file to [[Translation]]s. */
 object Parser {
   private val parser = new Parser
 
-  /**
-   * Returns an `Either`,
-   * `Left((error msg, error position))` on failure,
-   * or `Right(scaposer.Po)` on success.
-   */
-  def parsePo(po: String) = parser.parsePo(po)
+  //----------------------------------------------------------------------------
+  // We only want to expose parsePo methods, instead of exposing all methods
+  // inherited from JavaTokenParsers, in class Parser below.
+
+  def parse(po: CharSequence) = parser.parsePo(po)
+  def parse(po: Reader) = parser.parsePo(po)
 }
 
 /** See http://www.gnu.org/software/hello/manual/gettext/PO-Files.html */
 private class Parser extends JavaTokenParsers {
   private def mergeStrs(quoteds: List[String]): String = {
-    // Removes the first and last quote (") character of strings
-    // and concats them
+    // Remove the first and last quote (") character of strings
+    // and concat them
     val unquoted = quoteds.foldLeft("") { (acc, quoted) =>
       acc + quoted.substring(1, quoted.length - 1)
     }
@@ -70,8 +70,16 @@ private class Parser extends JavaTokenParsers {
     (opt(comment) ~ opt(msgctxt) ~
      opt(comment) ~ msgid ~
      opt(comment) ~ msgstr ~ opt(comment)) ^^ {
-    case _ ~ ctxo ~ _ ~ id ~ _ ~ str ~ _ =>
-      new Translation(ctxo, id, Array(str))
+    case ctxCommentso ~ ctxo ~ singularCommentso ~ singular ~ strCommentso ~ str ~ otherCommentso =>
+      SingularTranslation(
+        ctxCommentso.getOrElse(Seq.empty),
+        ctxo.getOrElse(""),
+        singularCommentso.getOrElse(Seq.empty),
+        singular,
+        strCommentso.getOrElse(Seq.empty),
+        str,
+        otherCommentso.getOrElse(Seq.empty)
+      )
   }
 
   private def plural =
@@ -79,32 +87,43 @@ private class Parser extends JavaTokenParsers {
      opt(comment) ~ msgid ~
      opt(comment) ~ msgidPlural ~
      opt(comment) ~ rep(msgstrN) ~ opt(comment)) ^^ {
-    case _ ~ ctxo ~ _ ~ id ~ _ ~ _ ~ _ ~ n_strs ~ _ =>
+    case ctxCommentso ~ ctxo ~ singularCommentso ~ singular ~ pluralCommentso ~ plural ~ strsCommentso ~ n_strs ~ otherCommentso =>
       val strs = n_strs.sorted.map { case (n, str) => str }
-      new Translation(ctxo, id, strs)
+      PluralTranslation(
+        ctxCommentso.getOrElse(Seq.empty),
+        ctxo.getOrElse(""),
+        singularCommentso.getOrElse(Seq.empty),
+        singular,
+        pluralCommentso.getOrElse(Seq.empty),
+        plural,
+        strsCommentso.getOrElse(Seq.empty),
+        strs,
+        otherCommentso.getOrElse(Seq.empty)
+      )
   }
 
   private def exp = rep(singular | plural)
 
-  /**
-   * Returns an `Either`,
-   * `Left((error msg, error position))` on failure,
-   * or `Right(scaposer.Po)` on success.
-   */
-  def parsePo(po: String): Either[(String, Position), Po] = {
-    parseAll(exp, po) match {
-      case NoSuccess(msg, next) =>
-        val errorPos = next.pos
-        Left((msg, errorPos))
+  //----------------------------------------------------------------------------
 
-      case Success(translations, _) =>
-        val body = translations.foldLeft(
-          Map.empty[(Option[String], String), Seq[String]]
-        ) { (acc, t) =>
-          val item = (t.ctxo, t.singular) -> t.strs
-          acc + item
-        }
-        Right(new Po(body))
-    }
+  def parsePo(po: CharSequence): Either[ParseFailure, Seq[Translation]] = {
+    val parseResult = parseAll(exp, po)
+    translationsFromParseResult(parseResult)
+  }
+
+  def parsePo(po: Reader): Either[ParseFailure, Seq[Translation]] = {
+    val parseResult = parseAll(exp, po)
+    translationsFromParseResult(parseResult)
+  }
+
+  private def translationsFromParseResult(
+    parseResult: ParseResult[List[Translation]]
+  ): Either[ParseFailure, Seq[Translation]] = parseResult match {
+    case NoSuccess(msg, next) =>
+      val errorPos = next.pos
+      Left(new ParseFailure(msg, errorPos))
+
+    case Success(translations, _) =>
+      Right(translations)
   }
 }

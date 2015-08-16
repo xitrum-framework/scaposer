@@ -1,6 +1,6 @@
 organization := "tv.cntt"
 name         := "scaposer"
-version      := "1.7-SNAPSHOT"
+version      := "1.8-SNAPSHOT"
 
 scalaVersion       := "2.11.6"
 crossScalaVersions := Seq("2.11.6", "2.10.5")

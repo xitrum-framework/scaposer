@@ -7,6 +7,9 @@ It's strange that there's not many JVM libraries of this kind, see the
 To extract i18n strings from Scala source code files, use
 `Scala xgettext <https://github.com/xitrum-framework/scala-xgettext>`_.
 
+Presentation:
+`I18nize Scala programs à la gettext <http://www.slideshare.net/ngocdaothanh/i18nize-scala-program-a-la-gettext>`_
+
 Discussion group: https://groups.google.com/group/scala-xgettext
 
 Basic usage
@@ -16,36 +19,37 @@ See `Scaladoc <http://xitrum-framework.github.io/scaposer/>`_.
 
 ::
 
-  val string = """
+  val po = """
   msgid "Hello"
   msgstr "Bonjour"
   """
 
-  val poe = scaposer.Parser.parsePo(string)
-  // => An Either, Left((error msg, error position)) on failure, or Right(scaposer.Po) on success
+  val result = scaposer.Parser.parse(po)
+  // => An Either,
+  // Left(scaposer.ParseFailure) or
+  // Right(Seq[scaposer.Translation])
 
 Use ``t`` methods to get the translations:
 
 ::
 
-  val po = poe.right.get // => A scaposer.Po
-  po.t("Hello")          // => "Bonjour"
+  val translations = result.right.get
+  val i18n         = scaposer.I18n(translations)
+  i18n.t("Hello")  // => "Bonjour"
 
-If there's no translation, or the translation is an empty string (not translated yet),
-the original input is returned:
+If there's no translation, or the translation is an empty string
+(not translated yet), the original input is returned:
 
 ::
 
-  po.t("Hi")  // => "Hi"
-
-To take out the map of all translations (to save into DB etc.), call ``po.body``.
+  i18n.t("Hi")  // => "Hi"
 
 Context
 -------
 
 ::
 
-  val string = """
+  val po = """
   msgid "Hello"
   msgstr "Bonjour"
 
@@ -54,14 +58,15 @@ Context
   msgstr "Salut"
   """
 
-  val po = Parser.parsePo(string).right.get
-  po.tc("Casual", "Hello")  // => "Salut"
+  val translations = scaposer.Parser.parse(po).right.get
+  val i18n         = scaposer.I18n(translations)
+  i18n.tc("Casual", "Hello")  // => "Salut"
 
 If there's no translation for the context, the translation without context is tried:
 
 ::
 
-  po.tc("Missing context", "Hello")  // => "Bonjour"
+  i18n.tc("Missing context", "Hello")  // => "Bonjour"
 
 
 Plural-Forms
@@ -78,7 +83,7 @@ It just removes spaces in the expression and performs string comparison. See
 
 ::
 
-  val string = """
+  val po = """
   msgid ""
   msgstr "Plural-Forms: nplurals=2; plural=n>1;"
 
@@ -88,22 +93,23 @@ It just removes spaces in the expression and performs string comparison. See
   msgstr[1] "J'ai %d pommes"
   """
 
-  val po = Parser.parsePo(string).right.get
-  po.tn("I have one apple", "I have %d apples", 1)
-  po.tn("I have one apple", "I have %d apples", 2)
-  po.tcn("A context", "I have one apple", "I have %d apples", 3)
+  val translations = scaposer.Parser.parse(po).right.get
+  val i18n         = scaposer.I18n(translations)
+  i18n.tn("I have one apple", "I have %d apples", 1)                // => "J'ai une pomme"
+  i18n.tn("I have one apple", "I have %d apples", 2)                // => "J'ai 2 pommes"
+  i18n.tcn("A context", "I have one apple", "I have %d apples", 3)  // => "J'ai 3 pommes"
 
 Merge Po objects
 ----------------
 
-You can merge ``Po`` together.
+You can merge multiple ``I18n``s together.
 
 ::
 
-  val po4 = po1 ++ po2 ++ po3
+  val i18n4 = i18n1 ++ i18n2 ++ i18n3
 
-Just like when you merge maps, translations in po3 will overwrite those in po2
-will overwrite those in po1.
+Just like when you merge maps, translations in i18n3 will overwrite those in
+i18n2 will overwrite those in i18n1.
 
 Use with SBT
 ------------
@@ -114,6 +120,6 @@ build.sbt example:
 
 ::
 
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.6"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.7"
 
 Scaposer is used in `Xitrum web framework <https://github.com/xitrum-framework/xitrum>`_.

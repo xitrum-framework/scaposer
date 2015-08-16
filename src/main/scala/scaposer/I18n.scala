@@ -1,41 +1,64 @@
 package scaposer
 
-/**
- * `body` is a map of `(ctxo, singular) -> strs`, see class [[Translation]].
- */
-class Po(val body: Map[(Option[String], String), Seq[String]]) {
-  def ++(other: Po): Po = {
+object I18n {
+  /**
+   * Parsed [[Translation]]s contains comments, we strip them to reduce memory usage.
+   * We don't need plural ID either as we only use (context, singular ID) as key
+   * to lookup translated strings.
+   */
+  def apply(translations: Seq[Translation]): I18n = {
+    // Strip unneccessary info and convert translations
+    // to map of (ctx, singular) -> strs
+    val ctxSingularToStrs = translations.foldLeft(
+      Map.empty[(String, String), Seq[String]]
+    ) { (acc, t) =>
+      val key_value = t match {
+        case SingularTranslation(_, ctx, _, singular, _, str, _) =>
+          (ctx, singular) -> Seq(str)
+
+        case PluralTranslation(_, ctx, _, singular, _, _, _, strs, _) =>
+          (ctx, singular) -> strs
+      }
+      acc + key_value
+    }
+
+    I18n(ctxSingularToStrs)
+  }
+}
+
+case class I18n(ctxSingularToStrs: Map[(String, String), Seq[String]]) {
+  def ++(other: I18n): I18n = {
     // Note the order of "++", "other" will overwrite "this"
-    val newBody = body ++ other.body
+    val newMap = ctxSingularToStrs ++ other.ctxSingularToStrs
 
     // Ensure that pluralForms is not lost because "other" does not have it
     if (other.pluralFormso.isDefined) {
-      new Po(newBody)
+      I18n(newMap)
     } else {
       if (pluralFormso.isDefined) {
-      val key   = (None, "")
-      val value = body(key)
-      new Po(body + (key -> value))
-    } else {
-      new Po(newBody)
-    }
+        val key   = ("", "")
+        val value = ctxSingularToStrs(key)
+        I18n(ctxSingularToStrs + (key -> value))
+      } else {
+        I18n(newMap)
+      }
     }
   }
 
-  def t(singular: String): String = lookupSingular(None, singular)
+  def t(singular: String): String = lookupSingular("", singular)
 
-  def tc(ctx: String, singular: String): String = lookupSingular(Some(ctx), singular)
+  def tc(ctx: String, singular: String): String = lookupSingular(ctx, singular)
 
-  def tn(singular: String, plural: String, n: Long): String = lookupPlural(None, singular, plural, n)
+  def tn(singular: String, plural: String, n: Long): String = lookupPlural("", singular, plural, n)
 
-  def tcn(ctx: String, singular: String, plural: String, n: Long): String = lookupPlural(Some(ctx), singular, plural, n)
+  def tcn(ctx: String, singular: String, plural: String, n: Long): String = lookupPlural(ctx, singular, plural, n)
 
   override def toString = {
     val buffer = new StringBuilder
     buffer.append("\n")
-    body.foreach { case ((ctxo, singular), strs) =>
-      if (ctxo.isDefined) {
-        buffer.append(ctxo.get)
+    ctxSingularToStrs.foreach { case ((ctx, singular), strs) =>
+      if (!ctx.isEmpty) {
+        buffer.append(ctx)
         buffer.append("\n")
       }
 
@@ -60,23 +83,24 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
 
   //----------------------------------------------------------------------------
 
-  private def lookupSingular(ctxo: Option[String], singular: String): String = {
-    body.get((ctxo, singular)) match {
+  private def lookupSingular(ctx: String, singular: String): String = {
+    ctxSingularToStrs.get((ctx, singular)) match {
       case Some(strs) =>
         // Newly created .pot/.po files have keys but the values are all empty
         val str = strs.head
         if (str.isEmpty) singular else str
 
       case None =>
-        if (ctxo.isDefined)
-          lookupSingular(None, singular)  // Try translation without context
-        else
+        // Fallback
+        if (ctx.isEmpty)
           singular
+        else
+          lookupSingular("", singular)  // Try translation without context
     }
   }
 
-  private def lookupPlural(ctxo: Option[String], singular: String, plural: String, n: Long): String = {
-    body.get((ctxo, singular)) match {
+  private def lookupPlural(ctx: String, singular: String, plural: String, n: Long): String = {
+    ctxSingularToStrs.get((ctx, singular)) match {
       case Some(strs) =>
         val index = evaluatePluralForms(n)
         if (index >= strs.size) {
@@ -88,10 +112,11 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
         }
 
       case None =>
-        if (ctxo.isDefined)
-          lookupPlural(None, singular, plural, n)  // Try translation without context
+        // Fallback
+        if (ctx.isEmpty)
+          if (n != 1) plural else singular       // English rule (not "n > 1"!)
         else
-          if (n != 1) plural else singular  // English rule (not "n > 1"!)
+          lookupPlural("", singular, plural, n)  // Try translation without context
     }
   }
 
@@ -99,7 +124,7 @@ class Po(val body: Map[(Option[String], String), Seq[String]]) {
 
   // See evaluatePluralForms below
   private val pluralFormso: Option[String] = {
-    body.get((None, "")) match {
+    ctxSingularToStrs.get(("", "")) match {
       case None => None
 
       case Some(strs) =>
