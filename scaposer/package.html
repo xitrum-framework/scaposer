@@ -66,43 +66,97 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="scaposer.Po" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PoextendsAnyRef"></a>
-      <a id="Po:Po"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="Po.html"><span class="name">Po</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.package@PoextendsAnyRef" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"><code>body</code> is a map of <code>(ctxo, singular) -&gt; strs</code>, see class <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>.</p>
-    </li><li name="scaposer.Translation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="TranslationextendsProductwithSerializable"></a>
-      <a id="Translation:Translation"></a>
+              <ol><li name="scaposer.I18n" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="I18nextendsProductwithSerializable"></a>
+      <a id="I18n:I18n"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Translation.html"><span class="name">Translation</span></a><span class="params">(<span name="ctxo">ctxo: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="strs">strs: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="I18n.html"><span class="name">I18n</span></a><span class="params">(<span name="ctxSingularToStrs">ctxSingularToStrs: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.package@TranslationextendsProductwithSerializable" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.package@I18nextendsProductwithSerializable" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Represents a translation item.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a translation item.
-<code>msgid_plural</code> in po file is for translators. We do not need to store it here
-because it is available in the translation methods of class <a href="Po.html" class="extype" name="scaposer.Po">Po</a>.
+      
+    </li><li name="scaposer.ParseFailure" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ParseFailureextendsProductwithSerializable"></a>
+      <a id="ParseFailure:ParseFailure"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ParseFailure.html"><span class="name">ParseFailure</span></a><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="position">position: <span class="extype" name="scala.util.parsing.input.Position">Position</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.package@ParseFailureextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="scaposer.PluralTranslation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PluralTranslationextendsTranslationwithProductwithSerializable"></a>
+      <a id="PluralTranslation:PluralTranslation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PluralTranslation.html"><span class="name">PluralTranslation</span></a><span class="params">(<span name="ctxComments">ctxComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="ctx">ctx: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="singularComments">singularComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="pluralComments">pluralComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="plural">plural: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="strsComments">strsComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="strs">strs: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="otherComments">otherComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.package@PluralTranslationextendsTranslationwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents a singular form translation item parsed from .po file.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a singular form translation item parsed from .po file.
+Empty <a href="PluralTranslation.html#ctx:String" class="extmbr" name="scaposer.PluralTranslation#ctx">ctx</a> means there's no ctx specified.
+Emptry comments means there are no comments specified.
 </p></div></div>
+    </li><li name="scaposer.SingularTranslation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SingularTranslationextendsTranslationwithProductwithSerializable"></a>
+      <a id="SingularTranslation:SingularTranslation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SingularTranslation.html"><span class="name">SingularTranslation</span></a><span class="params">(<span name="ctxComments">ctxComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="ctx">ctx: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="singularComments">singularComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="strComments">strComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="str">str: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="otherComments">otherComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.package@SingularTranslationextendsTranslationwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents a singular form translation item parsed from .po file.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a singular form translation item parsed from .po file.
+Empty <a href="SingularTranslation.html#ctx:String" class="extmbr" name="scaposer.SingularTranslation#ctx">ctx</a> means there's no ctx specified.
+Emptry comments means there are no comments specified.
+</p></div></div>
+    </li><li name="scaposer.Translation" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TranslationextendsAnyRef"></a>
+      <a id="Translation:Translation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Translation.html"><span class="name">Translation</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.package@TranslationextendsAnyRef" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 
@@ -110,7 +164,24 @@ because it is available in the translation methods of class <a href="Po.html" cl
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="scaposer.Parser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="scaposer.I18n" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="I18n"></a>
+      <a id="I18n:I18n"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="I18n$.html"><span class="name">I18n</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.package@I18n" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="scaposer.Parser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Parser"></a>
       <a id="Parser:Parser"></a>
       <h4 class="signature">
@@ -126,7 +197,7 @@ because it is available in the translation methods of class <a href="Po.html" cl
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt"> Parses .po file to <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>s.</p>
     </li></ol>
             </div>
 

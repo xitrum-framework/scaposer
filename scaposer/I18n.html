@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>Po - scaposer.Po</title>
-          <meta name="description" content="Po - scaposer.Po" />
-          <meta name="keywords" content="Po scaposer.Po" />
+          <title>I18n - scaposer.I18n</title>
+          <meta name="description" content="I18n - scaposer.I18n" />
+          <meta name="keywords" content="I18n scaposer.I18n" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
-            var hash = 'scaposer.Po';
+            var hash = 'scaposer.I18n';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -28,12 +28,14 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../lib/class_big.png" />
+        <a href="I18n$.html" title="See companion object"><img src="../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="package.html" class="extype" name="scaposer">scaposer</a></p>
-        <h1>Po</h1><h3><span class="morelinks"><div>Related Doc:
-            <a href="package.html" class="extype" name="scaposer">package scaposer</a>
+        <h1><a href="I18n$.html" title="See companion object">I18n</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="I18n$.html" title="See companion object">object I18n</a>
+            | <a href="package.html" class="extype" name="scaposer">package scaposer</a>
           </div></span></h3><span class="permalink">
-      <a href="../index.html#scaposer.Po" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -42,17 +44,16 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Po</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">I18n</span><span class="params">(<span name="ctxSingularToStrs">ctxSingularToStrs: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><code>body</code> is a map of <code>(ctxo, singular) -&gt; strs</code>, see class <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -70,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="scaposer.Po"><span>Po</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="scaposer.I18n"><span>I18n</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -90,19 +91,19 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="scaposer.Po#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(body:Map[(Option[String],String),Seq[String]]):scaposer.Po"></a>
-      <a id="&lt;init&gt;:Po"></a>
+              <ol><li name="scaposer.I18n#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(ctxSingularToStrs:Map[(String,String),Seq[String]]):scaposer.I18n"></a>
+      <a id="&lt;init&gt;:I18n"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Po</span><span class="params">(<span name="body">body: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>], <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span>
+        <span class="name">I18n</span><span class="params">(<span name="ctxSingularToStrs">ctxSingularToStrs: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@&lt;init&gt;(body:Map[(Option[String],String),Seq[String]]):scaposer.Po" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@&lt;init&gt;(ctxSingularToStrs:Map[(String,String),Seq[String]]):scaposer.I18n" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -128,7 +129,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -145,24 +146,24 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@##():Int" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@##():Int" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scaposer.Po#++" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="++(other:scaposer.Po):scaposer.Po"></a>
-      <a id="++(Po):Po"></a>
+    </li><li name="scaposer.I18n#++" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="++(other:scaposer.I18n):scaposer.I18n"></a>
+      <a id="++(I18n):I18n"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $plus$plus" class="name">++</span><span class="params">(<span name="other">other: <a href="" class="extype" name="scaposer.Po">Po</a></span>)</span><span class="result">: <a href="" class="extype" name="scaposer.Po">Po</a></span>
+        <span title="gt4s: $plus$plus" class="name">++</span><span class="params">(<span name="other">other: <a href="" class="extype" name="scaposer.I18n">I18n</a></span>)</span><span class="result">: <a href="" class="extype" name="scaposer.I18n">I18n</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@++(other:scaposer.Po):scaposer.Po" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@++(other:scaposer.I18n):scaposer.I18n" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -179,7 +180,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -196,28 +197,11 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scaposer.Po#body" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="body:Map[(Option[String],String),Seq[String]]"></a>
-      <a id="body:Map[(Option[String],String),Seq[String]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">body</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>], <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@body:Map[(Option[String],String),Seq[String]]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -230,7 +214,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@clone():Object" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@clone():Object" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -241,6 +225,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scaposer.I18n#ctxSingularToStrs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ctxSingularToStrs:Map[(String,String),Seq[String]]"></a>
+      <a id="ctxSingularToStrs:Map[(String,String),Seq[String]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctxSingularToStrs</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.I18n@ctxSingularToStrs:Map[(String,String),Seq[String]]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -253,28 +254,11 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -287,7 +271,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@finalize():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@finalize():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -310,24 +294,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@hashCode():Int" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -344,7 +311,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -361,7 +328,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -378,7 +345,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@notify():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@notify():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -395,7 +362,7 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -412,12 +379,12 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scaposer.Po#t" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scaposer.I18n#t" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="t(singular:String):String"></a>
       <a id="t(String):String"></a>
       <h4 class="signature">
@@ -429,12 +396,12 @@
         <span class="name">t</span><span class="params">(<span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@t(singular:String):String" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@t(singular:String):String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="scaposer.Po#tc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scaposer.I18n#tc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tc(ctx:String,singular:String):String"></a>
       <a id="tc(String,String):String"></a>
       <h4 class="signature">
@@ -446,12 +413,12 @@
         <span class="name">tc</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@tc(ctx:String,singular:String):String" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@tc(ctx:String,singular:String):String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="scaposer.Po#tcn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scaposer.I18n#tcn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tcn(ctx:String,singular:String,plural:String,n:Long):String"></a>
       <a id="tcn(String,String,String,Long):String"></a>
       <h4 class="signature">
@@ -463,12 +430,12 @@
         <span class="name">tcn</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="plural">plural: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="n">n: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@tcn(ctx:String,singular:String,plural:String,n:Long):String" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@tcn(ctx:String,singular:String,plural:String,n:Long):String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="scaposer.Po#tn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scaposer.I18n#tn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tn(singular:String,plural:String,n:Long):String"></a>
       <a id="tn(String,String,Long):String"></a>
       <h4 class="signature">
@@ -480,12 +447,12 @@
         <span class="name">tn</span><span class="params">(<span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="plural">plural: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="n">n: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@tn(singular:String,plural:String,n:Long):String" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@tn(singular:String,plural:String,n:Long):String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="scaposer.Po#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scaposer.I18n#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
@@ -497,11 +464,11 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@toString():String" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@toString():String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="scaposer.Po">Po</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="scaposer.I18n">I18n</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -514,7 +481,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@wait():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@wait():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -537,7 +504,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -560,7 +527,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Po@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.I18n@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -580,7 +547,15 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

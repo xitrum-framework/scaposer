@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>Parser - scaposer.Parser</title>
-          <meta name="description" content="Parser - scaposer.Parser" />
-          <meta name="keywords" content="Parser scaposer.Parser" />
+          <title>SingularTranslation - scaposer.SingularTranslation</title>
+          <meta name="description" content="SingularTranslation - scaposer.SingularTranslation" />
+          <meta name="keywords" content="SingularTranslation scaposer.SingularTranslation" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
-            var hash = 'scaposer.Parser$';
+            var hash = 'scaposer.SingularTranslation';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -26,14 +26,14 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <img src="../lib/object_big.png" />
+        <img src="../lib/class_big.png" />
         <p id="owner"><a href="package.html" class="extype" name="scaposer">scaposer</a></p>
-        <h1>Parser</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>SingularTranslation</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="scaposer">package scaposer</a>
           </div></span></h3><span class="permalink">
-      <a href="../index.html#scaposer.Parser$" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -42,16 +42,19 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Parser</span>
+        <span class="name">SingularTranslation</span><span class="params">(<span name="ctxComments">ctxComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="ctx">ctx: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="singularComments">singularComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="strComments">strComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="str">str: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="otherComments">otherComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p> Parses .po file to <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>s.</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents a singular form translation item parsed from .po file.
+Empty <a href="#ctx:String" class="extmbr" name="scaposer.SingularTranslation#ctx">ctx</a> means there's no ctx specified.
+Emptry comments means there are no comments specified.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -69,7 +72,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="scaposer.Parser"><span>Parser</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="scaposer.SingularTranslation"><span>SingularTranslation</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scaposer.Translation"><span>Translation</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -87,7 +90,27 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="scaposer.SingularTranslation#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(ctxComments:Seq[String],ctx:String,singularComments:Seq[String],singular:String,strComments:Seq[String],str:String,otherComments:Seq[String]):scaposer.SingularTranslation"></a>
+      <a id="&lt;init&gt;:SingularTranslation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">SingularTranslation</span><span class="params">(<span name="ctxComments">ctxComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="ctx">ctx: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="singularComments">singularComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="singular">singular: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="strComments">strComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="str">str: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="otherComments">otherComments: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.SingularTranslation@&lt;init&gt;(ctxComments:Seq[String],ctx:String,singularComments:Seq[String],singular:String,strComments:Seq[String],str:String,otherComments:Seq[String]):scaposer.SingularTranslation" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -107,7 +130,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -124,7 +147,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@##():Int" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@##():Int" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -141,7 +164,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -158,7 +181,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -175,7 +198,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@clone():Object" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@clone():Object" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -186,6 +209,40 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scaposer.SingularTranslation#ctx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ctx:String"></a>
+      <a id="ctx:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctx</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.SingularTranslation@ctx:String" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="scaposer.SingularTranslation#ctxComments" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ctxComments:Seq[String]"></a>
+      <a id="ctxComments:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ctxComments</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.SingularTranslation@ctxComments:Seq[String]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -198,28 +255,11 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -232,7 +272,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@finalize():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@finalize():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -255,24 +295,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@hashCode():Int" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -289,7 +312,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -306,7 +329,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -323,7 +346,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@notify():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@notify():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -340,41 +363,92 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scaposer.Parser#parse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="parse(po:java.io.Reader):Either[scaposer.ParseFailure,Seq[scaposer.Translation]]"></a>
-      <a id="parse(Reader):Either[ParseFailure,Seq[Translation]]"></a>
+    </li><li name="scaposer.SingularTranslation#otherComments" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="otherComments:Seq[String]"></a>
+      <a id="otherComments:Seq[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">parse</span><span class="params">(<span name="po">po: <span class="extype" name="java.io.Reader">Reader</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<a href="ParseFailure.html" class="extype" name="scaposer.ParseFailure">ParseFailure</a>, <span class="extype" name="scala.Seq">Seq</span>[<a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>]]</span>
+        <span class="name">otherComments</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@parse(po:java.io.Reader):Either[scaposer.ParseFailure,Seq[scaposer.Translation]]" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@otherComments:Seq[String]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="scaposer.Parser#parse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="parse(po:CharSequence):Either[scaposer.ParseFailure,Seq[scaposer.Translation]]"></a>
-      <a id="parse(CharSequence):Either[ParseFailure,Seq[Translation]]"></a>
+    </li><li name="scaposer.SingularTranslation#singular" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="singular:String"></a>
+      <a id="singular:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">parse</span><span class="params">(<span name="po">po: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<a href="ParseFailure.html" class="extype" name="scaposer.ParseFailure">ParseFailure</a>, <span class="extype" name="scala.Seq">Seq</span>[<a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a>]]</span>
+        <span class="name">singular</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@parse(po:CharSequence):Either[scaposer.ParseFailure,Seq[scaposer.Translation]]" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@singular:String" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="scaposer.SingularTranslation#singularComments" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="singularComments:Seq[String]"></a>
+      <a id="singularComments:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">singularComments</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.SingularTranslation@singularComments:Seq[String]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="scaposer.SingularTranslation#str" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="str:String"></a>
+      <a id="str:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">str</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.SingularTranslation@str:String" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="scaposer.SingularTranslation#strComments" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="strComments:Seq[String]"></a>
+      <a id="strComments:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">strComments</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#scaposer.SingularTranslation@strComments:Seq[String]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -391,28 +465,11 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@toString():String" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -425,7 +482,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@wait():Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@wait():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -448,7 +505,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -471,7 +528,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#scaposer.Parser$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../index.html#scaposer.SingularTranslation@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -491,7 +548,17 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scaposer.Translation">
+              <h3>Inherited from <a href="Translation.html" class="extype" name="scaposer.Translation">Translation</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
