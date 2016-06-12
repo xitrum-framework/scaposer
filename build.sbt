@@ -2,8 +2,8 @@ organization := "tv.cntt"
 name         := "scaposer"
 version      := "1.8-SNAPSHOT"
 
-scalaVersion       := "2.11.6"
-crossScalaVersions := Seq("2.11.6", "2.10.5")
+scalaVersion       := "2.11.8"
+crossScalaVersions := Seq("2.11.8", "2.10.6")
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
@@ -23,7 +23,7 @@ libraryDependencies := {
   }
 }
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "2.4.11" % "test"
+libraryDependencies += "org.specs2" %% "specs2-core" % "3.8.3" % "test"
 
 //------------------------------------------------------------------------------
 
