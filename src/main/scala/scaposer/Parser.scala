@@ -17,19 +17,21 @@ object Parser {
 
 /** See http://www.gnu.org/software/hello/manual/gettext/PO-Files.html */
 private class Parser extends JavaTokenParsers {
+  /**
+   * Removes the first and last quote (") character of strings and concat them.
+   */
   private def mergeStrs(quoteds: List[String]): String = {
-    // Remove the first and last quote (") character of strings
-    // and concat them
     val unquoted = quoteds.foldLeft("") { (acc, quoted) =>
       acc + quoted.substring(1, quoted.length - 1)
     }
 
     // Unescape
     unquoted.
-      replace("\\n",  "\n").
-      replace("\\r",  "\r").
-      replace("\\t",  "\t").
-      replace("\\\\", "\\")
+      replace("""\n""", "\n").
+      replace("""\r""", "\r").
+      replace("""\t""", "\t").
+      replace("""\\""", "\\").
+      replace("""\"""", "\"")
   }
 
   /**

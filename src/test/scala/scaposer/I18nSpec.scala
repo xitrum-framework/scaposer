@@ -28,6 +28,10 @@ class I18nSpec extends Specification {
     val translations = Parser.parse("").right.get
     val i18n = I18n(translations)
 
+    "use msgid" in {
+      i18n.t("Could not login.") must equalTo ("Could not login.")
+    }
+
     "be pluralized with the n != 1 rule" in {
       i18n.tn("One monkey", "$n monkeys", 2) must equalTo ("$n monkeys")
       i18n.tn("One monkey", "$n monkeys", 1) must equalTo ("One monkey")

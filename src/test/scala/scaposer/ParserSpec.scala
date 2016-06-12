@@ -11,7 +11,13 @@ class ParserSpec extends Specification {
 
   "PO singular string" should {
     "be Right" in {
-      Parser.parse(strPoSimple) must beRight
+      val p = Parser.parse(strPoSimple)
+      p must beRight
+
+      val translations = p.right.get
+      translations mustEqual Seq(SingularTranslation(
+        Seq.empty, "", Seq.empty, "Hello", Seq.empty, "Bonjour", Seq.empty
+      ))
     }
   }
 
@@ -19,13 +25,27 @@ class ParserSpec extends Specification {
 
   val strPoWithSlash =
     """
-      |msgid "Hello"
-      |msgstr "Bon\"jour"
+      |msgid "Hello \"world\""
+      |msgstr "Bonjour \"le monde\""
+      |
+      |msgid "Slashes \n\r\t\\"
+      |msgstr "Slashes \n\r\t\\"
     """.stripMargin
 
   "PO singular string with \"" should {
     "be Right" in {
-      Parser.parse(strPoWithSlash) must beRight
+      val p = Parser.parse(strPoWithSlash)
+      p must beRight
+
+      val translations = p.right.get
+      translations mustEqual Seq(
+        SingularTranslation(
+          Seq.empty, "", Seq.empty, "Hello \"world\"", Seq.empty, "Bonjour \"le monde\"", Seq.empty
+        ),
+        SingularTranslation(
+          Seq.empty, "", Seq.empty, "Slashes \n\r\t\\", Seq.empty, "Slashes \n\r\t\\", Seq.empty
+        )
+      )
     }
   }
 
@@ -34,10 +54,10 @@ class ParserSpec extends Specification {
   val strPoWithError =
     """
       |msgid "Hello"
-      |msgstr "Bon\"jour
+      |msgstr "Bonjour
     """.stripMargin
 
-  "PO singular string with \" with no doublequotes at the end" should {
+  "PO singular string with no doublequotes at the end" should {
     "be Left" in {
       Parser.parse(strPoWithError) must beLeft
     }
@@ -47,7 +67,7 @@ class ParserSpec extends Specification {
 
   val strPoWithWhiteSpaces =
     """
-      |msgid "Hello"
+      |msgid "Hello world"
       |msgstr "Bonjour le monde"
       |
       |msgid "Bye"
