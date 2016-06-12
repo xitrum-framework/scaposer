@@ -1,3 +1,8 @@
+1.8:
+
+* Parsed result of escaped double quote should not contain the escape character
+  https://github.com/xitrum-framework/scaposer/issues/15
+
 1.7:
 
 * Expose raw translations parsed from po file
