@@ -79,7 +79,7 @@ Your po file must define ``Plural-Forms`` exactly as at:
 
 Scaposer does not evaluate the ``plural`` expression, which is in C language.
 It just removes spaces in the expression and performs string comparison. See
-`evaluatePluralForms <https://github.com/xitrum-framework/scaposer/blob/master/src/main/scala/scaposer/Po.scala>`_.
+`evaluatePluralForms <https://github.com/xitrum-framework/scaposer/blob/master/src/main/scala/scaposer/I18n.scala>`_.
 
 ::
 
