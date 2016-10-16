@@ -8,7 +8,7 @@ object PluralIndexExpressionParser extends RegexParsers {
     }
 
     def apply(input: String): ParseResult[Long => Long] = parseAll(wholeExpr, input)
-  
+
     final private val assign = "="
     final private val equals = "=="
     final private val notEquals = "!="
@@ -16,37 +16,37 @@ object PluralIndexExpressionParser extends RegexParsers {
     final private val less = "<"
     final private val lessOrEquals = "<="
     final private val greaterOrEquals = ">="
-    
+
     final private val multuply = "*"
     final private val divide = "/"
     final private val mod = "%"
-    
+
     final private val plus = "+"
     final private val minus = "-"
-    
+
     final private val logicalAnd = "&&"
     final private val logicalOr = "||"
     final private val negation = "!"
-    
+
     final private val openBrace = "("
     final private val closeBrace = ")"
-    
+
     final private val nplurals = "nplurals"
     final private val plural = "plural"
     final private val endExpr = ";"
-    
+
     private def number = """\d+""".r ^^ { str =>
       x: Long => str.toLong
     }
-    
+
     private def integerConst = """\d+""".r ^^ (_.toInt)
-    
+
     private def n = "n" ^^ { _ =>
       x: Long => x.toLong
     }
-    
+
     private def subexpr = ternary | logicToNumber | expr
-    
+
     private def value: Parser[Long => Long] = number | n | (openBrace ~> subexpr <~ closeBrace)
 
     private def term: Parser[Long => Long] = value ~ rep(multuply ~ value | divide ~ value | mod ~ value) ^^ {
@@ -79,7 +79,7 @@ object PluralIndexExpressionParser extends RegexParsers {
         case (x, `logicalOr` ~ y) => t: Long => x(t) || y(t)
       }
     })
-    
+
     private def logicToNumber: Parser[Long => Long] = logic ^^ { x =>
       t: Long => if (x(t)) 1 else 0
     }
