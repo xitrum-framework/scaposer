@@ -72,15 +72,6 @@ If there's no translation for the context, the translation without context is tr
 Plural-Forms
 ------------
 
-Your po file must define ``Plural-Forms`` exactly as at:
-
-* http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
-* http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
-
-Scaposer does not evaluate the ``plural`` expression, which is in C language.
-It just removes spaces in the expression and performs string comparison. See
-`evaluatePluralForms <https://github.com/xitrum-framework/scaposer/blob/master/src/main/scala/scaposer/I18n.scala>`_.
-
 ::
 
   val po = """
@@ -98,6 +89,13 @@ It just removes spaces in the expression and performs string comparison. See
   i18n.tn("I have one apple", "I have %d apples", 1)                // => "J'ai une pomme"
   i18n.tn("I have one apple", "I have %d apples", 2)                // => "J'ai 2 pommes"
   i18n.tcn("A context", "I have one apple", "I have %d apples", 3)  // => "J'ai 3 pommes"
+
+For performance, your po file should define ``Plural-Forms`` exactly as at:
+
+* http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms
+* http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms
+
+Otherwise, Scaposer cannot compare the plural form string, and it needs to parse and evaluate (slower).
 
 Merge Po objects
 ----------------
@@ -120,6 +118,6 @@ build.sbt example:
 
 ::
 
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.7"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.9"
 
 Scaposer is used in `Xitrum web framework <https://github.com/xitrum-framework/xitrum>`_.

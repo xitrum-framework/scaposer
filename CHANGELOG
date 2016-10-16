@@ -1,3 +1,8 @@
+1.9:
+
+* Evaluate plural form
+  https://github.com/xitrum-framework/scaposer/issues/16
+
 1.8:
 
 * Parsed result of escaped double quote should not contain the escape character
