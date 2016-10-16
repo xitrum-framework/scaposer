@@ -79,4 +79,49 @@ class ParserSpec extends Specification {
       Parser.parse(strPoWithWhiteSpaces) must beRight
     }
   }
+
+  "PluralIndexExpressionParser" should {
+    "choose valid form for English" in {
+      val pluralStr = "nplurals=2; plural=(n != 1);"
+      val f = getPluralIndexEvaluator(pluralStr)
+      case object Apple
+      case object Apples
+      val msgStrs = List(Apple, Apples)
+      msgStrs(f(1)) must be equalTo (Apple)
+      msgStrs(f(2)) must be equalTo (Apples)
+      msgStrs(f(5)) must be equalTo (Apples)
+      msgStrs(f(11)) must be equalTo (Apples)
+      msgStrs(f(21)) must be equalTo (Apples)
+    }
+
+    "choose valid form for Russian" in {
+      val pluralStr = "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+      val f = getPluralIndexEvaluator(pluralStr)
+      case object Yabloko
+      case object Yabloka
+      case object Yablok
+      val msgStrs = List(Yabloko, Yabloka, Yablok)
+      msgStrs(f(1)) must be equalTo (Yabloko)
+      msgStrs(f(2)) must be equalTo (Yabloka)
+      msgStrs(f(5)) must be equalTo (Yablok)
+      msgStrs(f(11)) must be equalTo (Yablok)
+      msgStrs(f(21)) must be equalTo (Yabloko)
+    }
+
+    "choose valid form for Romanian" in {
+      val pluralStr = "nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;"
+      val f = getPluralIndexEvaluator(pluralStr)
+      f(1) must be equalTo (0)
+      f(2) must be equalTo (1)
+      f(5) must be equalTo (1)
+      f(11) must be equalTo (1)
+      f(21) must be equalTo (2)
+    }
+  }
+  
+  private def getPluralIndexEvaluator(expr: String) = {
+    PluralIndexExpressionParser(expr.replace(" ", "")).map { f =>
+      n: Long => f(n).toInt
+    }.get
+  }
 }

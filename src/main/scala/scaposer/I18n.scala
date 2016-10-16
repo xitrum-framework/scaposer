@@ -165,9 +165,16 @@ case class I18n(ctxSingularToStrs: Map[(String, String), Seq[String]]) {
     } else if (pluralFormsMatched("nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3")) {
       n => if (n % 100 == 1) 0 else if (n % 100 == 2) 1 else if (n % 100 == 3 || n % 100 == 4) 2 else 3
     } else {
-      n => 0
+      pluralFormso.map { expr =>
+        PluralIndexExpressionParser(expr) match {
+          case PluralIndexExpressionParser.Success(result, _) => x: Long => result(x).toInt
+          case failure: PluralIndexExpressionParser.NoSuccess => fallbackPluralFormEvaluator _
+        }
+      }.getOrElse(fallbackPluralFormEvaluator _)
     }
   }
+  
+  private def fallbackPluralFormEvaluator(n: Long) = 0
 
   private def pluralFormsMatched(pattern: String) = {
     pluralFormso match {
