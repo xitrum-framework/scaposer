@@ -112,7 +112,7 @@ i18n2 will overwrite those in i18n1.
 Use with SBT
 ------------
 
-Supported Scala versions: 2.11.x, 2.10.x
+Supported Scala versions: 2.12.x, 2.11.x, 2.10.x
 
 build.sbt example:
 
