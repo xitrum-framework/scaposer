@@ -21,9 +21,9 @@ private class Parser extends JavaTokenParsers {
    * Removes the first and last quote (") character of strings and concat them.
    */
   private def mergeStrs(quoteds: List[String]): String = {
-    val unquoted = quoteds.foldLeft("") { (acc, quoted) =>
-      acc + quoted.substring(1, quoted.length - 1)
-    }
+    val unquoted = quoteds.map { quoted =>
+      quoted.substring(1, quoted.length - 1)
+    }.mkString
 
     // Unescape
     unquoted.

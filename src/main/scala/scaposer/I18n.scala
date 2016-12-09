@@ -133,7 +133,7 @@ case class I18n(ctxSingularToStrs: Map[(String, String), Seq[String]]) {
           case None => None
 
           case Some(line) =>
-            Some(line.replace(" ", ""))
+            Some(line.replaceFirst("^Plural-Forms:", "").replace(" ", ""))
         }
     }
   }
