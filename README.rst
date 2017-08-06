@@ -87,8 +87,8 @@ Plural-Forms
   val translations = scaposer.Parser.parse(po).right.get
   val i18n         = scaposer.I18n(translations)
   i18n.tn("I have one apple", "I have %d apples", 1)                // => "J'ai une pomme"
-  i18n.tn("I have one apple", "I have %d apples", 2)                // => "J'ai 2 pommes"
-  i18n.tcn("A context", "I have one apple", "I have %d apples", 3)  // => "J'ai 3 pommes"
+  i18n.tn("I have one apple", "I have %d apples", 2)                // => "J'ai %d pommes"
+  i18n.tcn("A context", "I have one apple", "I have %d apples", 3)  // => "J'ai %d pommes"
 
 For performance, your po file should define ``Plural-Forms`` exactly as at:
 
