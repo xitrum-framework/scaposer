@@ -1,3 +1,8 @@
+1.11.0:
+
+* Update scala-parser-combinators from 1.0.4 to 1.1.1
+  https://github.com/xitrum-framework/scaposer/issues/21
+
 1.10:
 
 * Fix bug parsing "Plural-Forms" header in po file
