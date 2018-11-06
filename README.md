@@ -101,5 +101,5 @@ Supported Scala versions: 2.12.x, 2.11.x, 2.10.x
 build.sbt example:
 
 ```scala
-TODO not released yet
+libraryDependencies += "com.github.fbaierl" %%% "scalajs-scaposer" % "0.1"
 ```
