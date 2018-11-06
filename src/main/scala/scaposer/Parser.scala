@@ -37,13 +37,20 @@ private class Parser extends JavaTokenParsers {
   /**
    * Double quotes (`"`) enclosing a sequence of:
    *
-   * - Any character except double quotes, control characters or backslash (`\`)
-   * - A backslash followed by a slash, another backslash, or one of the letters
+   * (1.) Any character except double quotes, control characters or backslash (`\`)
+   * OR
+   * (2.) A backslash followed by a slash, another backslash, or one of the letters
    *    `b`, `f`, `n`, `r` or `t`.
-   * - `\` followed by `u` followed by four hexadecimal digits
+   * OR
+   * (3.) `\` followed by `u` followed by four hexadecimal digits
    */
-  private val reStringLiteral: Parser[String] =
-    ("\""+"""((\\\")|\p{Space}|\\u[a-fA-F0-9]{4}|[^"\p{Cntrl}\\]|\\[\\/bfnrt])*"""+"\"").r
+  private val reStringLiteral: Parser[String] = {
+    val first = """[^\\\"\x00-\x1F\x7F]"""
+    val second = """\\[\\/bfnrt]"""
+    val third ="""\\u[a-fA-F0-9]{4}"""
+    val sequence = "(" + first + "|" + second + "|" + third + ")*"
+    ("\"" + sequence + "\"").r
+  }
 
   // Scala regex is single line by default
   private def comment = rep(regex("^#.*".r))
