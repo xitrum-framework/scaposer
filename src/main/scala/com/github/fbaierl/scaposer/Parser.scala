@@ -1,6 +1,7 @@
-package scaposer
+package com.github.fbaierl.scaposer
 
 import java.io.Reader
+
 import scala.util.parsing.combinator.JavaTokenParsers
 
 /**  Parses .po file to [[Translation]]s. */
@@ -38,17 +39,22 @@ private class Parser extends JavaTokenParsers {
    * Double quotes (`"`) enclosing a sequence of:
    *
    * (1.) Any character except double quotes, control characters or backslash (`\`)
+   *      (escaped double quotes are okay though (4.))
    * OR
    * (2.) A backslash followed by a slash, another backslash, or one of the letters
    *    `b`, `f`, `n`, `r` or `t`.
    * OR
    * (3.) `\` followed by `u` followed by four hexadecimal digits
+   * OR
+   * (5.) Any white space character
    */
   private val reStringLiteral: Parser[String] = {
     val first = """[^\\\"\x00-\x1F\x7F]"""
     val second = """\\[\\/bfnrt]"""
     val third ="""\\u[a-fA-F0-9]{4}"""
-    val sequence = "(" + first + "|" + second + "|" + third + ")*"
+    val fourth = """(\\\")""" // escaped double quote \"
+    val fifth = """\s""" // white space char
+    val sequence = "(" + first + "|" + second + "|" + third + "|" + fourth + "|" + fifth + ")*"
     ("\"" + sequence + "\"").r
   }
 

@@ -1,4 +1,4 @@
-package scaposer
+package com.github.fbaierl.scaposer
 
 import org.specs2.mutable._
 

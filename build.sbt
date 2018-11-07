@@ -2,7 +2,7 @@ enablePlugins(ScalaJSPlugin)
 
 organization := "com.github.fbaierl"
 name         := "scalajs-scaposer"
-version      := "0.1"
+version      := "0.1.1"
 
 scalaVersion       := "2.12.6"
 crossScalaVersions := Seq("2.12.6", "2.11.12")

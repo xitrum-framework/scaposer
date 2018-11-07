@@ -1,4 +1,4 @@
-package scaposer
+package com.github.fbaierl.scaposer
 
 object I18n {
   /**
