@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/fbaierl/scalajs-scaposer.svg?branch=master)](https://travis-ci.org/fbaierl/scalajs-scaposer) 
 [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-0.6.17.svg)](https://www.scala-js.org)
 
 # scalajs-scaposer
