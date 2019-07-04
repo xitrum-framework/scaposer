@@ -2,7 +2,7 @@ organization := "tv.cntt"
 name         := "scaposer"
 version      := "1.11.1-SNAPSHOT"
 
-scalaVersion       := "2.12.8"
+scalaVersion       := "2.13.0"
 crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.12")
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
