@@ -1,0 +1,3 @@
+install:
+   - sbt '++ publishM2'
+   - env SCALAJS_VERSION="0.6.32" sbt '++ publishM2'
