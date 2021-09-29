@@ -50,7 +50,7 @@ object PluralIndexExpressionParser extends RegexParsers {
     private def value: Parser[Long => Long] = number | n | (openBrace ~> subexpr <~ closeBrace)
 
     private def term: Parser[Long => Long] = value ~ rep(multuply ~ value | divide ~ value | mod ~ value) ^^ {
-      case number ~ list => (number /: list) {
+      case number ~ list => list.foldLeft(number) {
         case (x, `multuply` ~ y) => t: Long => x(t) * y(t)
         case (x, `divide` ~ y) => t: Long => x(t) / y(t)
         case (x, `mod` ~ y) => t: Long => x(t) % y(t)
@@ -58,7 +58,7 @@ object PluralIndexExpressionParser extends RegexParsers {
     }
 
     private def expr: Parser[Long => Long] = term ~ rep(plus ~ term | minus ~ term) ^^ {
-      case number ~ list => (number /: list) {
+      case number ~ list => list.foldLeft(number) {
         case (x, `plus` ~ y) => t: Long => x(t) + y(t)
         case (x, `minus` ~ y) => t: Long => x(t) - y(t)
       }

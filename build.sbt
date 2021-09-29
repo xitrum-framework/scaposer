@@ -4,15 +4,15 @@ organization := "com.github.fbaierl"
 name         := "scalajs-scaposer"
 version      := "0.1.2"
 
-scalaVersion       := "2.12.6"
-crossScalaVersions := Seq("2.12.6", "2.11.12")
+scalaVersion       := "2.13.0"
+crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.12")
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
 // Scala 2.11+ core does not include scala.util.parsing.combinator
-libraryDependencies += "org.scala-lang.modules" %%% "scala-parser-combinators" % "1.1.1"
-libraryDependencies += "org.specs2" %%% "specs2-core" % "4.3.3" % "test"
+libraryDependencies += "org.scala-lang.modules" %%% "scala-parser-combinators" % "1.1.2"
+libraryDependencies += "org.specs2" %%% "specs2-core" % "4.12.12" % "test"
 
 // publishing
 homepage := Some(url("https://github.com/fbaierl/scalajs-scaposer"))

@@ -129,7 +129,8 @@ case class I18n(ctxSingularToStrs: Map[(String, String), Seq[String]]) {
 
       case Some(strs) =>
         val header = strs.head
-        header.lines.find(_.startsWith("Plural-Forms")) match {
+        //linesIterator is undeprecated in 2.13 to avoid ambiguity with lines method in JDK11
+        header.linesIterator.find(_.startsWith("Plural-Forms")) match {
           case None => None
 
           case Some(line) =>
