@@ -42,7 +42,7 @@ private class Parser extends JavaTokenParsers {
    *    `b`, `f`, `n`, `r` or `t`.
    * - `\` followed by `u` followed by four hexadecimal digits
    */
-  private val reStringLiteral: Parser[String] =
+  private val reStringLiteral: this.Parser[String] =
     ("\""+"""((\\\")|\p{Space}|\\u[a-fA-F0-9]{4}|[^"\p{Cntrl}\\]|\\[\\/bfnrt])*"""+"\"").r
 
   // Scala regex is single line by default

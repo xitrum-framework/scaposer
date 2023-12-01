@@ -112,12 +112,12 @@ i18n2 will overwrite those in i18n1.
 Use with SBT
 ------------
 
-Supported Scala versions: 2.11-2.13
+Supported Scala versions: 2.13-3
 
 build.sbt example:
 
 ::
 
-  libraryDependencies += "tv.cntt" %% "scaposer" % "1.11.1"
+  libraryDependencies += "tv.cntt" %% "scaposer" % "1.12.0"
 
 Scaposer is used in `Xitrum web framework <https://github.com/xitrum-framework/xitrum>`_.
