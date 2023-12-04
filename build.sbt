@@ -26,11 +26,17 @@ ThisBuild / scmInfo := Some(
 )
 ThisBuild / developers := List(
   Developer(
+    id    = "ngocdaothanh",
+    name  = "Ngoc Dao",
+    email = "ngocdaothanh@gmail.com",
+    url   = url("https://github.com/ngocdaothanh")
+  ),
+  Developer(
     id    = "OlegYch",
     name  = "Aleh Aleshka",
     email = "oleglbch@gmail.com",
     url   = url("https://github.com/OlegYch")
-  )
+  ),
 )
 
 ThisBuild / description := "GNU Gettext .po file loader for Scala"
