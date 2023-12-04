@@ -20,8 +20,8 @@ ThisBuild / organizationHomepage := Some(url("https://github.com/OlegYch"))
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
-    url("https://github.com/OlegYch/scala-dzi"),
-    "scm:git@github.com:OlegYch/scala-dzi.git"
+    url("https://github.com/OlegYch/scaposer"),
+    "scm:git@github.com:OlegYch/scaposer.git"
   )
 )
 ThisBuild / developers := List(
