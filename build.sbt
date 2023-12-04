@@ -3,9 +3,6 @@ lazy val `scaposer` = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
     name         := "scaposer",
 
-    scalaVersion       := "2.13.12",
-    crossScalaVersions := Seq(scalaVersion.value, "2.12.18", "3.3.1"),
-
     scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked"),
     javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
 
@@ -13,6 +10,9 @@ lazy val `scaposer` = crossProject(JSPlatform, JVMPlatform, NativePlatform)
 
     libraryDependencies += "org.specs2" %%% "specs2-core" % "4.20.3" % Test,
   )
+
+ThisBuild / scalaVersion       := "2.13.12"
+ThisBuild / crossScalaVersions := Seq(scalaVersion.value, "2.12.18", "3.3.1")
 
 ThisBuild / organization := "io.github.olegych"
 ThisBuild / organizationName := "OlegYch"
