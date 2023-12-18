@@ -121,7 +121,7 @@ class ParserSpec extends Specification {
   
   private def getPluralIndexEvaluator(expr: String) = {
     PluralIndexExpressionParser(expr.replace(" ", "")).map { f =>
-      n: Long => f(n).toInt
+      (n: Long) => f(n).toInt
     }.get
   }
 }

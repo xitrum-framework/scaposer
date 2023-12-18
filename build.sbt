@@ -1,17 +1,69 @@
-organization := "tv.cntt"
-name         := "scaposer"
-version      := "1.11.1-SNAPSHOT"
+lazy val `scaposer` = crossProject(JSPlatform, JVMPlatform, NativePlatform)
+  .crossType(CrossType.Pure)
+  .settings(
+    name         := "scaposer",
 
-scalaVersion       := "2.13.0"
-crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.12")
+    scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked"),
+    javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
 
-scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
-javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
+    libraryDependencies += "org.scala-lang.modules" %%% "scala-parser-combinators" % "2.3.0",
 
-// Scala 2.11+ core does not include scala.util.parsing.combinator
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
+    libraryDependencies += "org.specs2" %%% "specs2-core" % "4.20.3" % Test,
+  )
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "4.6.0" % "test"
+ThisBuild / scalaVersion       := "2.13.12"
+ThisBuild / crossScalaVersions := Seq(scalaVersion.value, "2.12.18", "3.3.1")
 
-//https://github.com/scala/scala-parser-combinators/issues/197
-fork in Test := true
+ThisBuild / organization := "io.github.olegych"
+ThisBuild / organizationName := "OlegYch"
+ThisBuild / organizationHomepage := Some(url("https://github.com/OlegYch"))
+
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/OlegYch/scaposer"),
+    "scm:git@github.com:OlegYch/scaposer.git"
+  )
+)
+ThisBuild / developers := List(
+  Developer(
+    id    = "ngocdaothanh",
+    name  = "Ngoc Dao",
+    email = "ngocdaothanh@gmail.com",
+    url   = url("https://github.com/ngocdaothanh")
+  ),
+  Developer(
+    id    = "OlegYch",
+    name  = "Aleh Aleshka",
+    email = "oleglbch@gmail.com",
+    url   = url("https://github.com/OlegYch")
+  ),
+)
+
+ThisBuild / description := "GNU Gettext .po file loader for Scala"
+ThisBuild / licenses := Seq("MIT" -> url("https://opensource.org/license/mit/"))
+ThisBuild / homepage := Some(url("https://github.com/OlegYch/scaposer"))
+
+// Remove all additional repository other than Maven Central from POM
+ThisBuild / pomIncludeRepository := { _ => false }
+ThisBuild / publishMavenStyle := true
+ThisBuild / publishTo := sonatypePublishToBundle.value
+ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
+ThisBuild / sonatypeProfileName := "OlegYch"
+ThisBuild / releaseCrossBuild := true
+
+import ReleaseTransformations._
+ThisBuild / versionScheme := Some("early-semver")
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  releaseStepCommandAndRemaining("+publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)

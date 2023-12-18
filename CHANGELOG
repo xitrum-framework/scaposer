@@ -1,6 +1,12 @@
+1.12.4: https://github.com/xitrum-framework/scaposer/pull/26
+
+* Support Scala 3, scala.js and scala-native
+* Remove support for Scala 2.11
+* Update scala-parser-combinators to 2.3.0
+
 1.11.1: https://github.com/xitrum-framework/scaposer/pull/22
 
-* Support Scala 12.3
+* Support Scala 2.13
 * Update scala-parser-combinators from 1.1.1 to 1.1.2
 
 1.11.0:
