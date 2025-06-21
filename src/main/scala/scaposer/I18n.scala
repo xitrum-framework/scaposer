@@ -168,13 +168,13 @@ case class I18n(ctxSingularToStrs: Map[(String, String), Seq[String]]) {
     } else {
       pluralFormso.map { expr =>
         PluralIndexExpressionParser(expr) match {
-          case PluralIndexExpressionParser.Success(result, _) => x: Long => result(x).toInt
-          case failure: PluralIndexExpressionParser.NoSuccess => fallbackPluralFormEvaluator _
+          case PluralIndexExpressionParser.Success(result, _) => (x: Long) => result(x).toInt
+          case failure: PluralIndexExpressionParser.NoSuccess => fallbackPluralFormEvaluator
         }
-      }.getOrElse(fallbackPluralFormEvaluator _)
+      }.getOrElse(fallbackPluralFormEvaluator)
     }
   }
-  
+
   private def fallbackPluralFormEvaluator(n: Long) = 0
 
   private def pluralFormsMatched(pattern: String) = {

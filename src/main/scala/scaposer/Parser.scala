@@ -120,12 +120,12 @@ private class Parser extends JavaTokenParsers {
 
   private def translationsFromParseResult(
     parseResult: ParseResult[List[Translation]]
-  ): Either[ParseFailure, Seq[Translation]] = parseResult match {
+  ): Either[ParseFailure, Seq[Translation]] = (parseResult: @unchecked) match {
+    case Success(translations, _) =>
+      Right(translations)
+
     case NoSuccess(msg, next) =>
       val errorPos = next.pos
       Left(new ParseFailure(msg, errorPos))
-
-    case Success(translations, _) =>
-      Right(translations)
   }
 }

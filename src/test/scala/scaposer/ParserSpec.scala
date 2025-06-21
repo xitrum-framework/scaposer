@@ -1,6 +1,6 @@
 package scaposer
 
-import org.specs2.mutable._
+import org.specs2.mutable.*
 
 class ParserSpec extends Specification {
   val strPoSimple =
@@ -14,10 +14,10 @@ class ParserSpec extends Specification {
       val p = Parser.parse(strPoSimple)
       p must beRight
 
-      val translations = p.right.get
-      translations mustEqual Seq(SingularTranslation(
+      val translations = p.toOption.get
+      translations must equalTo(Seq(SingularTranslation(
         Seq.empty, "", Seq.empty, "Hello", Seq.empty, "Bonjour", Seq.empty
-      ))
+      )))
     }
   }
 
@@ -37,15 +37,15 @@ class ParserSpec extends Specification {
       val p = Parser.parse(strPoWithSlash)
       p must beRight
 
-      val translations = p.right.get
-      translations mustEqual Seq(
+      val translations = p.toOption.get
+      translations must equalTo(Seq(
         SingularTranslation(
           Seq.empty, "", Seq.empty, "Hello \"world\"", Seq.empty, "Bonjour \"le monde\"", Seq.empty
         ),
         SingularTranslation(
           Seq.empty, "", Seq.empty, "Slashes \n\r\t\\", Seq.empty, "Slashes \n\r\t\\", Seq.empty
         )
-      )
+      ))
     }
   }
 
@@ -87,11 +87,11 @@ class ParserSpec extends Specification {
       case object Apple
       case object Apples
       val msgStrs = List(Apple, Apples)
-      msgStrs(f(1)) must be equalTo (Apple)
-      msgStrs(f(2)) must be equalTo (Apples)
-      msgStrs(f(5)) must be equalTo (Apples)
-      msgStrs(f(11)) must be equalTo (Apples)
-      msgStrs(f(21)) must be equalTo (Apples)
+      msgStrs(f(1)) must equalTo(Apple)
+      msgStrs(f(2)) must equalTo(Apples)
+      msgStrs(f(5)) must equalTo(Apples)
+      msgStrs(f(11)) must equalTo(Apples)
+      msgStrs(f(21)) must equalTo(Apples)
     }
 
     "choose valid form for Russian" in {
@@ -101,27 +101,27 @@ class ParserSpec extends Specification {
       case object Yabloka
       case object Yablok
       val msgStrs = List(Yabloko, Yabloka, Yablok)
-      msgStrs(f(1)) must be equalTo (Yabloko)
-      msgStrs(f(2)) must be equalTo (Yabloka)
-      msgStrs(f(5)) must be equalTo (Yablok)
-      msgStrs(f(11)) must be equalTo (Yablok)
-      msgStrs(f(21)) must be equalTo (Yabloko)
+      msgStrs(f(1)) must equalTo(Yabloko)
+      msgStrs(f(2)) must equalTo(Yabloka)
+      msgStrs(f(5)) must equalTo(Yablok)
+      msgStrs(f(11)) must equalTo(Yablok)
+      msgStrs(f(21)) must equalTo(Yabloko)
     }
 
     "choose valid form for Romanian" in {
       val pluralStr = "nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;"
       val f = getPluralIndexEvaluator(pluralStr)
-      f(1) must be equalTo (0)
-      f(2) must be equalTo (1)
-      f(5) must be equalTo (1)
-      f(11) must be equalTo (1)
-      f(21) must be equalTo (2)
+      f(1) must equalTo(0)
+      f(2) must equalTo(1)
+      f(5) must equalTo(1)
+      f(11) must equalTo(1)
+      f(21) must equalTo(2)
     }
   }
-  
+
   private def getPluralIndexEvaluator(expr: String) = {
     PluralIndexExpressionParser(expr.replace(" ", "")).map { f =>
-      n: Long => f(n).toInt
+      (n: Long) => f(n).toInt
     }.get
   }
 }

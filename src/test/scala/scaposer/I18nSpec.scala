@@ -1,6 +1,6 @@
 package scaposer
 
-import org.specs2.mutable._
+import org.specs2.mutable.*
 
 class I18nSpec extends Specification {
   "Plural-Forms where n != 1" should {
@@ -18,7 +18,7 @@ class I18nSpec extends Specification {
        |msgstr[0] "Yksi ankanpoikanen"
        |msgstr[1] "$n ankanpoikasta"
      """.stripMargin
-    val translations = Parser.parse(po).right.get
+    val translations = Parser.parse(po).toOption.get
     val i18n = I18n(translations)
 
     "work" in {
@@ -29,7 +29,7 @@ class I18nSpec extends Specification {
   }
 
   "Missing translations" should {
-    val translations = Parser.parse("").right.get
+    val translations = Parser.parse("").toOption.get
     val i18n = I18n(translations)
 
     "use msgid" in {
@@ -49,14 +49,14 @@ class I18nSpec extends Specification {
         |msgid "Could not login."
         |msgstr ""
       """.stripMargin
-    val translations = Parser.parse(po).right.get
+    val translations = Parser.parse(po).toOption.get
     val i18n = I18n(translations)
 
     "use msgid instead of the meaningless empty msgstr" in {
       i18n.t("Could not login.") must equalTo ("Could not login.")
     }
   }
-  
+
   "Plural-Forms: nplurals=2; plural=(n != 1);" should {
     val po =
       """
@@ -72,7 +72,7 @@ class I18nSpec extends Specification {
        |msgstr[0] "Yksi ankanpoikanen"
        |msgstr[1] "$n ankanpoikasta"
      """.stripMargin
-    val translations = Parser.parse(po).right.get
+    val translations = Parser.parse(po).toOption.get
     val i18n = I18n(translations)
 
     "work" in {
@@ -81,7 +81,7 @@ class I18nSpec extends Specification {
       i18n.tn("One duckling", "$n ducklings", 0) must equalTo ("$n ankanpoikasta")
     }
   }
-  
+
   "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);" should {
     val po =
       """
@@ -99,7 +99,7 @@ class I18nSpec extends Specification {
        |msgstr[1] "$n яблока"
        |msgstr[2] "$n яблок"
      """.stripMargin
-    val translations = Parser.parse(po).right.get
+    val translations = Parser.parse(po).toOption.get
     val i18n = I18n(translations)
 
     "work" in {
